@@ -1,2 +1,3 @@
-# student_pathway_project
+# Student Pathway Project
+
 Project to predict the enrollment pathway of students
