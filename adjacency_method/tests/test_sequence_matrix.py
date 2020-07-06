@@ -1,11 +1,11 @@
-from adjacency_method.adjacency_method import sequence_matrix
+from adjacency_method.sequence_matrix import sequence_matrix
 import pandas as pd
 import numpy as np
 
 
 def test_data1():
 	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data1.csv")
-	data.outcome_date = pd.to_datetime(data.outcome_date)	
+	data.outcome_date = pd.to_datetime(data.outcome_date)
 	assert all(data.columns == ["student_id","unit_code", "unit_name", "outcome_date", "teaching_calendar", "grade", "mark"])
 	assert (data.shape == (9,7))
 
@@ -21,7 +21,7 @@ def test_sequence_matrix_test1():
 
 def test_data2():
 	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data2.csv")
-	data.outcome_date = pd.to_datetime(data.outcome_date)	
+	data.outcome_date = pd.to_datetime(data.outcome_date)
 	assert all(data.columns == ["student_id","unit_code", "unit_name", "outcome_date", "teaching_calendar", "grade", "mark"])
 	assert (data.shape == (18,7))
 
@@ -37,7 +37,7 @@ def test_sequence_matrix_test2():
 
 def test_data3():
 	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data3.csv")
-	data.outcome_date = pd.to_datetime(data.outcome_date)	
+	data.outcome_date = pd.to_datetime(data.outcome_date)
 	assert all(data.columns == ["student_id","unit_code", "unit_name", "outcome_date", "teaching_calendar", "grade", "mark"])
 	assert (data.shape == (16,7))
 
@@ -54,7 +54,7 @@ def test_sequence_matrix_test3():
 
 def test_data4():
 	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data4.csv")
-	data.outcome_date = pd.to_datetime(data.outcome_date)	
+	data.outcome_date = pd.to_datetime(data.outcome_date)
 	assert all(data.columns == ["student_id","unit_code", "unit_name", "outcome_date", "teaching_calendar", "grade", "mark"])
 	assert (data.shape == (13,7))
 
