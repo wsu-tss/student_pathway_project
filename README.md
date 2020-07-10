@@ -7,7 +7,34 @@ Project to predict the enrolment pathway of students. This project is a work in 
 * [Python 3](https://www.python.org/downloads/)
 * [Anaconda](https://www.anaconda.com/)
 * [Networkx](https://networkx.github.io/documentation/stable/install.html)
-    * To download Networkx library use `pip install networkx`
+
+## Creating virtual environment and installing the requirements
+
+Create a virtual environment and install all the required packages from `requirements.txt`
+
+### Create virtual environment
+
+Type the following commands in your terminal/Command prompt
+
+**Install Virtual Environment package**
+
+`pip install virtualenv`
+
+**Create Virtual Environment**
+
+`python -m venv venv`
+
+**Activate Virtual Environment**
+
+For Windows: `venv\Scripts\activate`
+
+For Linux or Mac OS: `source venv/bin/activate`
+
+## Install the dependencies in the virtual environment
+
+`pip install -r requirements.txt`
+
+This will ensure that all the required python packages are installed in the virtual environment.
 
 # Dataset
 
