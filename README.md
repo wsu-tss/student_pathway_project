@@ -16,21 +16,17 @@ Create a virtual environment and install all the required packages from `require
 
 Type the following commands in your terminal/Command prompt
 
-**Install Virtual Environment package**
+**Install Virtual Environment package:** `pip install virtualenv`
 
-`pip install virtualenv`
-
-**Create Virtual Environment**
-
-`python -m venv venv`
+**Create Virtual Environment:** `python -m venv venv`
 
 **Activate Virtual Environment**
 
-For Windows: `venv\Scripts\activate`
+* For Windows: `venv\Scripts\activate`
 
-For Linux or Mac OS: `source venv/bin/activate`
+* For Linux or Mac OS: `source venv/bin/activate`
 
-## Install the dependencies in the virtual environment
+### Install the dependencies in the virtual environment
 
 `pip install -r requirements.txt`
 
