@@ -22,7 +22,7 @@ def sequence_matrix(data):
     dates = data["outcome_date"].to_list()
     for date in dates:
         if not isinstance(date, datetime):
-            raise ValueError("outcome_date is not a datetime object")
+            raise ValueError("outcome_date is not a datetime object.")
 
     # Number of units
     unit_number = data["unit_name"].nunique()
