@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
 def sequence_matrix(data):
     """Return the sequence matrix.
@@ -17,6 +18,11 @@ def sequence_matrix(data):
     if not isinstance(data, pd.DataFrame):
         raise TypeError("The parameter to sequence_matrix must contain pandas dataframe.")
 
+    # Checking for datetime
+    dates = data["outcome_date"].to_list()
+    for date in dates:
+        if not isinstance(date, datetime):
+            raise ValueError("outcome_date is not a datetime object")
 
     # Number of units
     unit_number = data["unit_name"].nunique()
