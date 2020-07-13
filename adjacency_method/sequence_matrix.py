@@ -13,6 +13,11 @@ def sequence_matrix(data):
     units -- list of all the units in the data.
     """
 
+    #Checking for pandas dataframe
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The parameter to sequence_matrix must contain pandas dataframe.")
+
+
     # Number of units
     unit_number = data["unit_name"].nunique()
 
