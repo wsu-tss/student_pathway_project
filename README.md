@@ -80,6 +80,12 @@ The dataset consists of the following file structure:
 
 Any cleaning operation must result in storing the `final_data` in `students_data/combined_data/final_data.csv`
 
+After importing the `final_data.csv` file into a Jupyter notebook, make sure to convert the dates into a datetime object.
+
+Example:
+
+`final_data['outcome_date'] = pd.to_datetime(final_data.outcome_date)`
+
 **DO NOT EDIT THE RAW DATA MANUALLY WITH EXCEL OR WITH TEXT EDITOR.**
 
 The key data of interest is **Enrolments** and **Results**.
