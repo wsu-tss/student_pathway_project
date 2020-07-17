@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import sys
 
 def sequence_matrix(data):
     """Return the sequence matrix.
@@ -15,14 +16,20 @@ def sequence_matrix(data):
     """
 
     #Checking for pandas dataframe
+    print("Checking for the input parameter is pandas dataframe...", end="")
     if not isinstance(data, pd.DataFrame):
         raise TypeError("The parameter to sequence_matrix must contain pandas dataframe.")
 
+    print(u'\N{check mark}')
+
     # Checking for datetime
+    print("Checking for the outcome_date to be a datetime object...", end="")
     dates = data["outcome_date"].to_list()
     for date in dates:
         if not isinstance(date, datetime):
             raise ValueError("outcome_date is not a datetime object.")
+
+    print(u'\N{check mark}')
 
     # Number of units
     unit_number = data["unit_name"].nunique()
@@ -41,6 +48,8 @@ def sequence_matrix(data):
 
     # Allocating the month to differentiate between semesters; August being the 8th month.
     august = 8
+
+    print("Initiating sequence matrix generation...", end="")
 
     # Iterating through the list of students
     for student in students:
@@ -85,5 +94,7 @@ def sequence_matrix(data):
 
             # Updating the sequence matrix
             M[student_index][unit_index] = preference
+
+    print(u'\N{check mark}')
 
     return M, students.tolist(), units.tolist()
