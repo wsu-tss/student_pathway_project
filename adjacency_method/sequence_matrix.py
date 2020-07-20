@@ -3,17 +3,21 @@ import numpy as np
 from datetime import datetime
 import sys
 
-def sequence_matrix(data):
+def sequence_matrix(data, sem_separator_month=8):
     """Return the sequence matrix.
 
     Keyword arguments:
     data -- Pandas dataframe for which the sequence matrix is to be generated.
+    sem_separator_month -- Month number used to separate the semesters. Default value is 8 for august.
 
     Returns:
     M -- sequence matrix of m x n where m = rows of students and n = columns of units.
     students -- list of all the students in the data.
     units -- list of all the units in the data.
     """
+
+    # Calculating start time
+    start_time = datetime.now()
 
     #Checking for pandas dataframe
     print("Checking for the input parameter is pandas dataframe...", end="")
@@ -46,9 +50,6 @@ def sequence_matrix(data):
     # list of units with unit_name
     units = data["unit_name"].unique()
 
-    # Allocating the month to differentiate between semesters; August being the 8th month.
-    august = 8
-
     print("Initiating sequence matrix generation...", end="")
 
     # Iterating through the list of students
@@ -77,10 +78,10 @@ def sequence_matrix(data):
             unit_outcome_month = student_data.iloc[i].outcome_date.month
 
             # Checking semester preference
-            if (unit_outcome_month > august and spring == False):
+            if (unit_outcome_month > sem_separator_month and spring == False):
                 semester_preference += 1
                 spring = True
-            elif (unit_outcome_month < august):
+            elif (unit_outcome_month < sem_separator_month):
                 spring = False
 
             # Gets the preference of the unit as per the year
@@ -96,5 +97,9 @@ def sequence_matrix(data):
             M[student_index][unit_index] = preference
 
     print(u'\N{check mark}')
+
+    # Calculating elapsed time
+    elapsed_time = datetime.now() - start_time
+    print(f"Time elapsed (hh:mm:ss.ms) {elapsed_time}")
 
     return M, students.tolist(), units.tolist()

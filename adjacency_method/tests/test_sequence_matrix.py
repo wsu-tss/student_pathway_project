@@ -78,3 +78,13 @@ def test_sequence_matrix_test5():
 def test_sequence_matrix_test6():
 	with pytest.raises(TypeError):
 		M, students, units = sequence_matrix()
+
+def test_sequence_matrix_test7():
+	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data1.csv")
+	data.outcome_date = pd.to_datetime(data.outcome_date)
+	M, students, units = sequence_matrix(data, sem_separator_month=9)
+	assert (M == [[1,1,1,2,2,2,3,3,3]]).all()
+	assert (len(students) == 1)
+	assert (len(units) == 9)
+	assert (students == [12345])
+	assert (units == ["Physics", "Chemistry", "Maths", "English", "Biology", "Mechanics", "Philosophy", "History", "Geography"])
