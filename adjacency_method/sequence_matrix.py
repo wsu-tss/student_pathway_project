@@ -16,6 +16,9 @@ def sequence_matrix(data, sem_separator_month=8):
     units -- list of all the units in the data.
     """
 
+    # Calculating start time
+    start_time = datetime.now()
+
     #Checking for pandas dataframe
     print("Checking for the input parameter is pandas dataframe...", end="")
     if not isinstance(data, pd.DataFrame):
@@ -94,5 +97,9 @@ def sequence_matrix(data, sem_separator_month=8):
             M[student_index][unit_index] = preference
 
     print(u'\N{check mark}')
+
+    # Calculating elapsed time
+    elapsed_time = datetime.now() - start_time
+    print(f"Time elapsed (hh:mm:ss.ms) {elapsed_time}")
 
     return M, students.tolist(), units.tolist()
