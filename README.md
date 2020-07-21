@@ -124,4 +124,4 @@ The functions can be directly imported into Jupyter notebook.
 
 **EXAMPLE**:
 
-`from adjacency_method.sequence_matrix import sequence_matrix`
+`from adjacency_method import sequence_matrix`
