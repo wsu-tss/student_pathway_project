@@ -1,4 +1,4 @@
-from adjacency_method.sequence_matrix import sequence_matrix
+from adjacency_method import sequence_matrix
 import pandas as pd
 import numpy as np
 import pytest
