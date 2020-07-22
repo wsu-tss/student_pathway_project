@@ -41,7 +41,7 @@ def adjacency_matrix(M):
         for j in range(_P_dim):
             delta = M[:, j] - M[:, i]
             d = np.absolute(delta)
-            _P[i][j] = np.dot(np.array([int(k >= 0) for k in delta]), np.array([int(l == 1) for l in d]))
+            _P[i][j] = np.sum(np.array([int(k >= 0) for k in delta]) * np.array([int(l == 1) for l in d]) * np.array([int(n != 1) for n in M[:, j]]))
             P[i][j] = _P[i][j]/np.sum(np.array([int(m > 0) for m in M[:, j]]))
 
     print(u'\N{check mark}')
