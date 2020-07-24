@@ -34,6 +34,10 @@ def adjacency_matrix(M):
     # Creating a zeros P matrix of size of units from M
     P = copy.deepcopy(_P)
 
+    # Summing up the columns
+    Mj = np.where(M > 0, 1, 0)
+    Mj_total = np.sum(Mj, axis=0)
+
     # P matrix generation
     print("Generating P matrix...", end="")
 
@@ -41,8 +45,11 @@ def adjacency_matrix(M):
         for j in range(_P_dim):
             delta = M[:, j] - M[:, i]
             d = np.absolute(delta)
-            _P[i][j] = np.sum(np.array([int(k >= 0) for k in delta]) * np.array([int(l == 1) for l in d]) * np.array([int(n != 1) for n in M[:, j]]))
-            P[i][j] = _P[i][j]/np.sum(np.array([int(m > 0) for m in M[:, j]]))
+            _P[i][j] = np.sum(np.where(delta >= 0, 1, 0) * np.where(d == 1, 1, 0) * np.where(M[:, j] != 1, 1, 0))
+            if (Mj_total[j] == 0 or _P[i][j] == 0):
+                P[i][j] = 0
+            else:
+                P[i][j] = _P[i][j]/Mj_total[j]
 
     print(u'\N{check mark}')
 
