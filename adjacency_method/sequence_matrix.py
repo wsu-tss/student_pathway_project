@@ -35,6 +35,9 @@ def sequence_matrix(data, sem_separator_month=8):
 
     print(u'\N{check mark}')
 
+    # Assigning spring value. It indicates if the Spring semester is ON.
+    spring = False
+
     # Number of units
     unit_number = data["unit_name"].nunique()
 
