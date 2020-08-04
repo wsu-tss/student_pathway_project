@@ -27,11 +27,8 @@ def sequence_matrix(data, sem_separator_month=8):
     print(u'\N{check mark}')
 
     # Checking for datetime
-    print("Checking for the outcome_date to be a datetime object...", end="")
-    dates = data["outcome_date"].to_list()
-    for date in dates:
-        if not isinstance(date, datetime):
-            raise ValueError("outcome_date is not a datetime object.")
+    print("Converting to dates to datetime object...", end="")
+    data.outcome_date = pd.to_datetime(data.outcome_date)
 
     print(u'\N{check mark}')
 

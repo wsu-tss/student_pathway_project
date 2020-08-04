@@ -70,10 +70,16 @@ def test_sequence_matrix_test4():
 	assert (students == [111, 222, 333, 444, 555])
 	assert (units == ["Physics","Chemistry", "Maths", "Biology"])
 
+# Test to check without datetime object in outcome_date
 def test_sequence_matrix_test5():
 	data = pd.read_csv("adjacency_method/tests/test_data_files/test_data1.csv")
-	with pytest.raises(ValueError):
-		M, students, units = sequence_matrix(data)
+	M, students, units = sequence_matrix(data)
+	assert (M == [[1,1,1,2,2,2,3,3,3]]).all()
+	assert (len(students) == 1)
+	assert (len(units) == 9)
+	assert (students == [12345])
+	assert (units == ["Physics", "Chemistry", "Maths", "English", "Biology", "Mechanics", "Philosophy", "History", "Geography"])
+
 
 def test_sequence_matrix_test6():
 	with pytest.raises(TypeError):
