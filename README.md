@@ -120,6 +120,12 @@ Use **Networkx** library to generate the network diagram.
 
 `adjacency_method` is a Python module developed to use the functions declared in this module.
 
+This module consists of :
+
+* `sequence_matrix`
+* `adjacency_matrix`
+
+
 The functions can be directly imported into Jupyter notebook.
 
 **EXAMPLE**:
