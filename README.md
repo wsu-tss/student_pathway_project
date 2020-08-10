@@ -42,6 +42,22 @@ Run the following to get the list of install packages:
 
 This will ensure that all the required python packages are installed in the virtual environment.
 
+### Virtual Environment in Jupyter NOTEBOOK
+
+Open Terminal/Anaconda Powershell Prompt and execute the following:
+
+`ipython kernel install --user --name=venv`
+
+Launch Jupyter notebook from Anaconda Powershell Prompt by executing the following:
+
+`jupyter notebook`
+
+### Changing the kernel in jupyter Notebook
+
+On the menu bar select `Kernel > Change kernel > venv`.
+
+While creating a new notebook, select `venv` instead of `Python3`.
+
 # Dataset
 
 The data used in the `data_processing.ipynb` file is taken from the directory `students_data`.
