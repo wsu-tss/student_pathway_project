@@ -5,14 +5,15 @@ import sys
 import copy
 
 def adjacency_matrix(M):
-    """Return adjacency matrix
+    """Return adjacency matrices
 
     Keyword arguments:
     M -- sequence matrix of (m, n) dimensions matrix of type numpy.ndarray
 
     Returns:
-    _P -- graph projection matrix of (m, m) dimensions
-    P -- adjaceny matrix of (m, m) dimensions
+    _P -- graph projection matrix of (n, n) dimensions
+    P -- adjaceny matrix of (n, n) dimensions with subject-wise probability
+    Q -- adjacency_matrix of (n, n) dimensions with total probability
     """
 
     # Calculating start time
@@ -28,11 +29,17 @@ def adjacency_matrix(M):
     # Getting the dimensions for _P matrix from M matrix's columns
     _P_dim = M.shape[1]
 
+    # Getting total number of students from M matrix's rows
+    total_students = M.shape[0]
+
     # Creating a zeros _P matrix of size of units from M
     _P = np.zeros((_P_dim, _P_dim))
 
     # Creating a zeros P matrix of size of units from M
     P = copy.deepcopy(_P)
+
+    # Creating a zeros Q matrix of size unit from M
+    Q = copy.deepcopy(P)
 
     # Summing up the columns
     Mj = np.where(M > 0, 1, 0)
@@ -48,8 +55,10 @@ def adjacency_matrix(M):
             _P[i][j] = np.sum(np.where(delta >= 0, 1, 0) * np.where(d == 1, 1, 0) * np.where(M[:, j] != 1, 1, 0))
             if (Mj_total[j] == 0 or _P[i][j] == 0):
                 P[i][j] = 0
+                Q[i][j] = 0
             else:
                 P[i][j] = _P[i][j]/Mj_total[j]
+                Q[i][j] = _P[i][j]/total_students
 
     print(u'\N{check mark}')
 
@@ -57,4 +66,4 @@ def adjacency_matrix(M):
     elapsed_time = datetime.now() - start_time
     print(f"Time elapsed (hh:mm:ss.ms) {elapsed_time}")
 
-    return _P, P
+    return _P, P, Q
