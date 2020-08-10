@@ -26,6 +26,16 @@ Type the following commands in your terminal/Command prompt
 
 * For Linux or Mac OS: `source venv/bin/activate`
 
+### Exporting packages
+
+Every time a new package is installed in the environment, execute the following:
+
+`pip freeze --local > requirements.txt`
+
+Run the following to get the list of install packages:
+
+`pip list`
+
 ### Install the dependencies in the virtual environment
 
 `pip install -r requirements.txt`
