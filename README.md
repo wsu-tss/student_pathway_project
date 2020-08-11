@@ -150,10 +150,11 @@ This module consists of :
 
 * `sequence_matrix`
 * `adjacency_matrix`
+* `network_graph`
 
 
 The functions can be directly imported into Jupyter notebook.
 
 **EXAMPLE**:
 
-`from adjacency_method import sequence_matrix, adjacency_matrix`
+`from adjacency_method import sequence_matrix, adjacency_matrix, network_graph`
