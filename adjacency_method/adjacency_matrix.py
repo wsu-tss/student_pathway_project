@@ -46,7 +46,7 @@ def adjacency_matrix(M):
     Mj_total = np.sum(Mj, axis=0)
 
     # P matrix generation
-    print("Generating P matrix...", end="")
+    print("Generating matrices...", end="")
 
     for i in range(_P_dim):
         for j in range(_P_dim):

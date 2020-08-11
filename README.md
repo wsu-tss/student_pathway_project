@@ -26,11 +26,37 @@ Type the following commands in your terminal/Command prompt
 
 * For Linux or Mac OS: `source venv/bin/activate`
 
+### Exporting packages
+
+Every time a new package is installed in the environment, execute the following:
+
+`pip freeze --local > requirements.txt`
+
+Run the following to get the list of install packages:
+
+`pip list`
+
 ### Install the dependencies in the virtual environment
 
 `pip install -r requirements.txt`
 
 This will ensure that all the required python packages are installed in the virtual environment.
+
+### Virtual Environment in Jupyter NOTEBOOK
+
+Open Terminal/Anaconda Powershell Prompt and execute the following:
+
+`ipython kernel install --user --name=venv`
+
+Launch Jupyter notebook from Anaconda Powershell Prompt by executing the following:
+
+`jupyter notebook`
+
+### Changing the kernel in jupyter Notebook
+
+On the menu bar select `Kernel > Change kernel > venv`.
+
+While creating a new notebook, select `venv` instead of `Python3`.
 
 # Dataset
 
@@ -124,10 +150,11 @@ This module consists of :
 
 * `sequence_matrix`
 * `adjacency_matrix`
+* `network_graph`
 
 
 The functions can be directly imported into Jupyter notebook.
 
 **EXAMPLE**:
 
-`from adjacency_method import sequence_matrix, adjacency_matrix`
+`from adjacency_method import sequence_matrix, adjacency_matrix, network_graph`
