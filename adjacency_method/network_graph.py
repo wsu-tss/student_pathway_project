@@ -6,25 +6,44 @@ from datetime import datetime
 import sys
 import os
 
-def network_graph(matrix, units, figure_size=(50,50), color_node="red", color_edges="Blues", resolution=500, file_location="images/network_results/", label_position=0.3, edge_width=2, layout_type="circular", node_labels=True, save_figure=True, show_weights=True, edge_radius=0.1, size_node=300):
+def network_graph(matrix,
+                  units,
+                  figure_size=(50,50),
+                  color_node="red",
+                  color_edges="blue",
+                  resolution=500,
+                  file_location="images/network_results/",
+                  label_position=0.3,
+                  edge_width=2,
+                  layout_type="circular",
+                  save_figure=True,
+                  show_weights=True,
+                  edge_radius=0.1,
+                  size_node=300,
+                  edge_threshold=0.5,
+                  esmall_transparency=0.5,
+                  esmall_thickness=1):
     """Saves and displays the network Diagram
 
     Keyword arguments:
     matrix -- adjacency matrix of type np.ndarray
     units -- list of units present in the dataset
-    figure_size -- a tuple that determines the size of matplotlib diagram. Default value is (50,50)
-    color_node -- color of nodes. Default value is "red"
-    color_edges -- cmap color used in matplotlib used for different shades of color. Default is "Blues"
-    resolution -- image resolution used in saving the diagram. Default value is 500
-    file_location -- location to store the image. Default value is "images/test_dataset"
-    label_position -- Adjust the position of the labels on the edges. Default value is 0.3
-    edge_width -- Size of the width of the edge. Default value is 2
-    layout_type -- type of layout for the graph. Default is "circular"
-    node_labels -- Boolean to show/hide the node labels. Default is True
-    save_figure -- Boolean to save figure. Default is True
-    show_weights -- Boolean to show weights on the network diagram. Default is True
-    edge_radius -- Float value of the radius of the edge. Default is 0.1
-    size_node -- Size of nodes. Default is 300
+    figure_size -- a tuple that determines the size of matplotlib diagram (Default=(50,50))
+    color_node -- color of nodes (Default="red")
+    color_edges -- cmap color used in matplotlib used for different shades of color (Default="blue")
+    resolution -- image resolution used in saving the diagram (Default=500)
+    file_location -- location to store the image (Default="images/test_dataset")
+    label_position -- Adjust the position of the labels on the edges (Default=0.3)
+    edge_width -- Size of the width of the edge (Default=2)
+    layout_type -- type of layout for the graph (Default="circular")
+    save_figure -- Boolean to save figure (Defaul=True)
+    show_weights -- Boolean to show weights on the network diagram (Default=True)
+    edge_radius -- Float value of the radius of the edge (Default=0.1)
+    size_node -- Size of nodes (Default=300)
+    edge_threshold -- Differentiates the edges in terms of thickness (Default=0.5)
+    esmall_transparency -- transparency for edges beyond (Default=0.5)
+    esmall_thickness -- thickness of underthreshold edges (Default=1)
+
 
     Returns:
     None
@@ -71,13 +90,44 @@ def network_graph(matrix, units, figure_size=(50,50), color_node="red", color_ed
     else:
         position = nx.spring_layout(G)
 
+    # Generating edge thickness
+    elarge = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] >= edge_threshold]
+    esmall = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] < edge_threshold]
+
     try:
-        # Draw the graph with color codes
-        nx.draw(G, pos=position, with_labels=node_labels, connectionstyle='arc3, rad={}'.format(edge_radius), edge_list=edges, node_color=color_node, node_size=size_node, edge_color=weights, width=edge_width, edge_cmap=plt.get_cmap(color_edges))
+        # nodes
+        nx.draw_networkx_nodes(G,
+                               pos=position,
+                               node_size=size_node,
+                               node_color=color_node,
+                               label=mapping)
+
+        nx.draw_networkx_labels(G, pos=position)
+
+        # edges
+        nx.draw_networkx_edges(G,
+                               pos=position,
+                               connectionstyle='arc3, rad={}'.format(edge_radius),
+                               edgelist=elarge,
+                               edge_color=color_edges,
+                               alpha=None,
+                               width=edge_width)
+
+        # edges
+        nx.draw_networkx_edges(G,
+                               pos=position,
+                               connectionstyle='arc3, rad={}'.format(edge_radius),
+                               edgelist=esmall,
+                               edge_color=color_edges,
+                               alpha=esmall_transparency,
+                               width=esmall_thickness)
+
     except ValueError as e:
+        print("ValueError: ")
         print(e)
+        print("Creating default network graph...")
         # Uses default values to display Graph
-        nx.draw(G, pos=position, with_labels=node_labels, connectionstyle='arc3, rad=0.1', edge_list=edges, edge_color=weights, width=2, edge_cmap=plt.cm.Blues)
+        nx.draw(G, pos=position, with_labels=node_labels, connectionstyle='arc3, rad=0.1', edge_list=edges, width=2)
 
     # Checks if the user requested the weigts on graph
     if show_weights == True:
