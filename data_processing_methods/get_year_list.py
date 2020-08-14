@@ -1,7 +1,3 @@
-import pandas as pd
-import numpy as np
-from datetime import datetime
-import sys
 import os
 
 def get_year_list(root_folder):
