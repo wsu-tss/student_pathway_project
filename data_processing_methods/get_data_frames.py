@@ -1,7 +1,7 @@
 import pandas as pd
 
 def get_data_frames(data_name, root_folder, years):
-    """Returns an array of dataframe of the requested data_name
+    """Returns a list of dataframe of the requested data_name
 
     Keyword arguments:
     data_name -- The name of the data to be imported (example: data_name=enrolments)
