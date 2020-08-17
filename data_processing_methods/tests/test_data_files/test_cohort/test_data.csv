@@ -8,7 +8,7 @@ student_id,unit_code,unit_name,outcome_date,teaching_calendar,grade,mark,student
 333,100,Physics,2018-06-02,Autumn Session,P,50.0,Engineering
 333,200,Chemistry,2018-06-02,Autumn Session,P,50.0,Engineering
 333,400,Biology,2018-06-02,Autumn Session,P,50.0,Engineering
-444,100,Physics,2017-06-06,Autumn Session,P,55.0,Science
+444,100,Physics,2017-06-06,Autumn Session,P,55.0,Bachelor of Science
 555,200,Chemistry,2017-06-06,Autumn Session,H,85.0,Science
 555,300,Maths,2017-06-06,Autumn Session,D,75.0,Science
 555,400,Biology,2017-11-01,Spring Session,H,85.0,Science
