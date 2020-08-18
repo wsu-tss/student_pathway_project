@@ -24,7 +24,7 @@ def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
         if exclusive_search:
             filtered_data = final_data.loc[final_data["student_cohort"] == student_cohort]
         else:
-            filtered_data = final_data.loc[final_data["student_cohort"].str.contains(student_cohort)]
+            filtered_data = final_data.loc[final_data["student_cohort"].str.contains(student_cohort) == True]
 
     except ValueError as e:
         print("ValueError: " + str(e))
