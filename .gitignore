@@ -3,6 +3,8 @@ students_data/
 
 # Files to ignore
 adjacency_method.ipynb
+networkx_trials.ipynb
+network_test_data.ipynb
 
 # Images
 images/
