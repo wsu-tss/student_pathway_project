@@ -1,12 +1,13 @@
 import pandas as pd
 
-def cohort_filter(data, student_cohort, unit_list=None):
+def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
     """Returns pandas dataframe with rows that are present in unit_list
 
     Keyword arguments:
     data -- csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
     student_cohort -- student cohort to filter (example: student_cohort='Bachelor of Engineering (Honours)')
     unit_list -- csv datafile of the unit list as per cohort (example: unit_list='units_data/engineering_data/engineering_units.csv') (Default=None)
+    exclusive_search -- Boolean that determines to search the student_cohort exclusively or partially (Default=True)
 
     Returns:
     filtered_data -- Pandas dataframe with filtered data
@@ -20,7 +21,11 @@ def cohort_filter(data, student_cohort, unit_list=None):
         final_data['outcome_date'] = pd.to_datetime(final_data.outcome_date)
 
         # Sort the data with the student_cohort
-        filtered_data = final_data.loc[final_data["student_cohort"] == student_cohort]
+        if exclusive_search:
+            filtered_data = final_data.loc[final_data["student_cohort"] == student_cohort]
+        else:
+            filtered_data = final_data.loc[final_data["student_cohort"].str.contains(student_cohort) == True]
+
     except ValueError as e:
         print("ValueError: " + str(e))
         raise

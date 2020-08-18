@@ -24,3 +24,15 @@ def test_cohort_filter3():
 def test_cohort_filter4():
     filtered_data = cohort_filter(data, "Engineering",unit_list=unit_list)
     assert(filtered_data.shape == (8,8))
+
+def test_cohort_filter5():
+    filtered_data = cohort_filter(data, "Bachelor of Science")
+    assert(filtered_data.shape == (1,8))
+
+def test_cohort_filter6():
+    filtered_data = cohort_filter(data, "Science", exclusive_search=False)
+    assert(filtered_data.shape == (4,8))
+
+def test_cohort_filter7():
+    filtered_data = cohort_filter(data, "Science",unit_list=unit_list, exclusive_search=False)
+    assert(filtered_data.shape == (3,8))
