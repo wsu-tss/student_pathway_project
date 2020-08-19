@@ -141,12 +141,13 @@ The `final_data` is generated which is a combination of all the years of data.
 
 Use **Networkx** library to generate the network diagram.
 
+### Packages
 
-## Adjacency Method
+## Adjacency
 
-`adjacency_method` is a Python module developed to use the functions declared in this module.
+`adjacency` is a Python module developed to use the functions declared in this module.
 
-This module consists of :
+This module consists of:
 
 * `sequence_matrix`
 * `adjacency_matrix`
@@ -155,6 +156,28 @@ This module consists of :
 
 The functions can be directly imported into Jupyter notebook.
 
-**EXAMPLE**:
+Import the functions in the Jupyter notebook:
 
-`from adjacency_method import sequence_matrix, adjacency_matrix, network_graph`
+```
+from studentpathway.adjacency.adjacency_matrix import adjacency_matrix
+from studentpathway.adjacency.sequence_matrix import sequence_matrix
+from studentpathway.adjacency.network_graph import network_graph
+```
+
+## Data Processing
+
+`dataprocessing` is a Python module developed for all the data processing operations.
+
+This module consists of:
+
+* `get_data_frames`
+* `get_year_list`
+* `cohort_filter`
+
+Import the functions in the Jupyter notebook:
+
+```
+from studentpathway.dataprocessing.get_data_frames import get_data_frames
+from studentpathway.dataprocessing.get_year_list import get_year_list
+from studentpathway.dataprocessing.cohort_filter import cohort_filter
+```
