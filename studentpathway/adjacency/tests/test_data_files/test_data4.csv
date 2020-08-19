@@ -1,0 +1,14 @@
+student_id,unit_code,unit_name,outcome_date,teaching_calendar,grade,mark
+111,001,Physics,2017-06-06,Autumn Session,P,55.0
+111,002,Chemistry,2017-11-06,Autumn Session,H,85.0
+222,003,Maths,2017-06-06,Autumn Session,D,75.0
+222,004,Physics,2017-11-01,Spring Session,H,85.0
+222,005,Chemistry,2017-11-01,Spring Session,H,86.0
+333,006,Maths,2017-11-01,Spring Session,H,86.0
+333,007,Physics,2018-06-02,Autumn Session,P,50.0
+333,008,Chemistry,2018-06-02,Autumn Session,P,50.0
+333,009,Biology,2018-06-02,Autumn Session,P,50.0
+444,001,Physics,2017-06-06,Autumn Session,P,55.0
+555,002,Chemistry,2017-06-06,Autumn Session,H,85.0
+555,003,Maths,2017-06-06,Autumn Session,D,75.0
+555,004,Biology,2017-11-01,Spring Session,H,85.0
