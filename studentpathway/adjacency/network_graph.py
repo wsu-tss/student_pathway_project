@@ -122,6 +122,17 @@ def network_graph(matrix,
                                alpha=esmall_transparency,
                                width=esmall_thickness)
 
+        # Checks if the user requested the weigts on graph
+        if show_weights:
+            try:
+                # Draw the graph with edge labels
+                weight_labels = {(u, v): round(d['weight'], 2) for u, v, d in G.edges(data=True) if d['weight'] >= edge_threshold}
+                nx.draw_networkx_edge_labels(G, pos=position, label_pos=label_position, connectionstyle='arc3, rad={}'.format(edge_radius), edge_labels=weight_labels)
+            except ValueError as e:
+                print(e)
+                # Uses default values to display graph
+                nx.draw_networkx_edge_labels(G, pos=position, label_pos=label_position, connectionstyle='arc3, rad=0.1')
+
     except ValueError as e:
         print("ValueError: ")
         print(e)
@@ -129,15 +140,7 @@ def network_graph(matrix,
         # Uses default values to display Graph
         nx.draw(G, pos=position, with_labels=node_labels, connectionstyle='arc3, rad=0.1', edge_list=edges, width=2)
 
-    # Checks if the user requested the weigts on graph
-    if show_weights == True:
-        try:
-            # Draw the graph with edge labels
-            nx.draw_networkx_edge_labels(G, pos=position, label_pos=label_position, connectionstyle='arc3, rad={}'.format(edge_radius))
-        except ValueError as e:
-            print(e)
-            # Uses default values to display graph
-            nx.draw_networkx_edge_labels(G, pos=position, label_pos=label_position, connectionstyle='arc3, rad=0.1')
+
 
     # Saves the network diagram in a file file location
     if save_figure == True:
