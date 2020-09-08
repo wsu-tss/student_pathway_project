@@ -1,4 +1,4 @@
-from studentpathway.dataprocessing.cohort_filter import cohort_filter
+from studentpathway.dataprocessing.filters import cohort_filter
 import pandas as pd
 import datetime
 import pytest
