@@ -1,5 +1,7 @@
-from studentpathway.dataprocessing.filters import cohort_filter
+from studentpathway.dataprocessing.filters import cohort_filter, grades_filter
 import pandas as pd
+import numpy as np
+import math
 import datetime
 import pytest
 
@@ -34,5 +36,45 @@ def test_cohort_filter6():
     assert(filtered_data.shape == (4,8))
 
 def test_cohort_filter7():
-    filtered_data = cohort_filter(data, "Science",unit_list=unit_list, exclusive_search=False)
+    filtered_data = cohort_filter(data, "Science", unit_list=unit_list, exclusive_search=False)
     assert(filtered_data.shape == (3,8))
+
+# grade_filter tests
+def test_grades_filter1():
+    with pytest.raises(Exception):
+        filtered_data = grades_filter()
+
+def test_grades_filter2():
+    filtered_data = grades_filter(data)
+    assert(filtered_data.shape == (14,8))
+
+def test_grades_filter3():
+    grade_list = ['P', 'H', 'D', 'H', 'H', 'H', 'P', 'F', 'P', 'S', 'H', 'D', 'H', None]
+    filtered_data = grades_filter(data)
+    assert(filtered_data['grade'].tolist() == grade_list)
+
+def test_grades_filter4():
+    grade_list = ['P', 'H', 'D', 'H', 'H', 'H', 'P', 'X', 'P', 'S', 'H', 'D', 'H', None]
+    filtered_data = grades_filter(data, avoid={'S', 'X'})
+    assert(filtered_data['grade'].tolist() == grade_list)
+
+def test_grades_filter5():
+    filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, avoid={'S'})
+    grade_list = ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'F', 'P', 'S', 'P', 'P', 'P', None]
+    assert(filtered_data['grade'].tolist() == grade_list)
+
+def test_grades_filter6():
+    filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, avoid={})
+    grade_list = ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'F', 'P', None, 'P', 'P', 'P', None]
+    assert(filtered_data['grade'].tolist() == grade_list)
+    assert(np.isnan(filtered_data['mark'].tolist()[9]))
+    assert(np.isnan(filtered_data['mark'].tolist()[13]))
+
+# tests for remove missing
+def test_grades_filter7():
+    filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, remove_missing=True)
+    assert(filtered_data.shape == (13, 8))
+
+def test_grades_filter8():
+    filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, avoid={}, remove_missing=True)
+    assert(filtered_data.shape == (12, 8))
