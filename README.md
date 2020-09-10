@@ -172,12 +172,12 @@ This module consists of:
 
 * `get_data_frames`
 * `get_year_list`
-* `cohort_filter`
+* `filters`
 
 Import the functions in the Jupyter notebook:
 
 ```
 from studentpathway.dataprocessing.get_data_frames import get_data_frames
 from studentpathway.dataprocessing.get_year_list import get_year_list
-from studentpathway.dataprocessing.cohort_filter import cohort_filter
+from studentpathway.dataprocessing.filters import cohort_filter, grades_filter
 ```
