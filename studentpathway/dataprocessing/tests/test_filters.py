@@ -20,24 +20,24 @@ def test_cohort_filter2():
 
 def test_cohort_filter3():
     filtered_data = cohort_filter(data, "Engineering")
-    assert(filtered_data.shape == (9,8))
+    assert(filtered_data.shape[0] == 9)
     assert(isinstance(filtered_data.outcome_date[0], datetime.date))
 
 def test_cohort_filter4():
     filtered_data = cohort_filter(data, "Engineering",unit_list=unit_list)
-    assert(filtered_data.shape == (8,8))
+    assert(filtered_data.shape[0] == 8)
 
 def test_cohort_filter5():
     filtered_data = cohort_filter(data, "Bachelor of Science")
-    assert(filtered_data.shape == (1,8))
+    assert(filtered_data.shape[0] == 1)
 
 def test_cohort_filter6():
     filtered_data = cohort_filter(data, "Science", exclusive_search=False)
-    assert(filtered_data.shape == (4,8))
+    assert(filtered_data.shape[0] == 4)
 
 def test_cohort_filter7():
     filtered_data = cohort_filter(data, "Science", unit_list=unit_list, exclusive_search=False)
-    assert(filtered_data.shape == (3,8))
+    assert(filtered_data.shape[0] == 3)
 
 # grade_filter tests
 def test_grades_filter1():
@@ -46,7 +46,7 @@ def test_grades_filter1():
 
 def test_grades_filter2():
     filtered_data = grades_filter(data)
-    assert(filtered_data.shape == (14,8))
+    assert(filtered_data.shape[0] == 14)
 
 def test_grades_filter3():
     grade_list = ['P', 'H', 'D', 'H', 'H', 'H', 'P', 'F', 'P', 'S', 'H', 'D', 'H', None]
@@ -73,8 +73,8 @@ def test_grades_filter6():
 # tests for remove missing
 def test_grades_filter7():
     filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, remove_missing=True)
-    assert(filtered_data.shape == (13, 8))
+    assert(filtered_data.shape[0] == 13)
 
 def test_grades_filter8():
     filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, avoid={}, remove_missing=True)
-    assert(filtered_data.shape == (12, 8))
+    assert(filtered_data.shape[0] == 12)
