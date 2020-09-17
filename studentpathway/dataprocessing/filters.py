@@ -3,6 +3,33 @@ import numpy as np
 import copy
 import numbers
 
+
+def get_data(data):
+    """Reads the data as a csv or a pandas DataFrame and returns the DataFrame
+
+    Keyword arguments:
+    data -- path to the csv file or pandas DataFrame
+
+    Returns:
+    final_data -- pandas DataFrame
+    """
+
+    try:
+        # Checks if the data is not a Pandas Dataframe
+        if not isinstance(data, pd.DataFrame):
+            # Reads the csv file
+            final_data = pd.read_csv(data)
+
+            # Converts the outcome_date into datetime objects
+            final_data['outcome_date'] = pd.to_datetime(final_data.outcome_date)
+        else:
+            final_data = copy.deepcopy(data)
+
+        return final_data
+    except ValueError as e:
+        print("ValueError: " + str(e))
+        raise
+
 def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
     """Returns pandas dataframe with rows that are present in unit_list
 
@@ -63,20 +90,7 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
     filtered_data -- Pandas dataframe with filtered data
     """
 
-    try:
-        # Checks if the data is not a Pandas Dataframe
-        if not isinstance(data, pd.DataFrame):
-            # Reads the csv file
-            final_data = pd.read_csv(data)
-
-            # Converts the outcome_date into datetime objects
-            final_data['outcome_date'] = pd.to_datetime(final_data.outcome_date)
-        else:
-            final_data = copy.deepcopy(data)
-    except ValueError as e:
-        print("ValueError: " + str(e))
-        raise
-
+    final_data = get_data(data)
     # Creating a deepcopy of the data
     filtered_data = copy.deepcopy(final_data)
 
@@ -106,5 +120,36 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
     # removes the missing data rows
     if remove_missing:
             filtered_data = filtered_data.drop(filtered_data[pd.isnull(filtered_data.grade) & np.isnan(filtered_data.mark)].index).reset_index(drop=True)
+
+    return filtered_data
+
+def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gender", "campus_code", "citizenship", "indigenous_type"], set_codes=True):
+    """Returns pandas dataframe with categorical variables from the columns
+
+    Keyword arguments:
+    data -- csv file of the data (example: data='students_data/combined_data/final_data.csv') or pandas DataFrame
+    categorical_columns -- list of columns in the data that requires categorical filtering
+    set_codes -- Boolean to set the categorical column with numerical value (Default=True)
+
+    Returns:
+    filtered_data -- filtered data with the columns as categorical variables
+    """
+
+    data = get_data(data)
+
+    filtered_data = copy.deepcopy(data)
+
+    for column in categorical_columns:
+        if column in data.columns:
+            try:
+                if set_codes:
+                    filtered_data[column] = pd.Categorical(data[column]).codes
+                else:
+                    filtered_data[column] = pd.Categorical(data[column])
+            except ValueError as e:
+                print("ValueError: " + str(e))
+                raise
+        else:
+            print(f"Column with name {column} does not exist in the dataset!\nSkipping {column}.")
 
     return filtered_data

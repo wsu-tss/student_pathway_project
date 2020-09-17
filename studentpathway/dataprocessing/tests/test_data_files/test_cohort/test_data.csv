@@ -1,15 +1,15 @@
-student_id,unit_code,unit_name,outcome_date,teaching_calendar,grade,mark,student_cohort
-111,100,Physics,2017-06-06,Autumn Session,P,55.0,Engineering
-111,200,Chemistry,2017-11-06,Autumn Session,H,85.0,Engineering
-222,300,Maths,2017-06-06,Autumn Session,D,75.0,Engineering
-222,100,Physics,2017-11-01,Spring Session,H,85.0,Engineering
-222,200,Chemistry,2017-11-01,Spring Session,H,86.0,Engineering
-333,300,Maths,2017-11-01,Spring Session,H,86.0,Engineering
-333,100,Physics,2018-06-02,Autumn Session,P,50.0,Engineering
-333,200,Chemistry,2018-06-02,Autumn Session,X,40.0,Engineering
-333,400,Biology,2018-06-02,Autumn Session,P,50.0,Engineering
-444,100,Physics,2017-06-06,Autumn Session,S,NaN,Bachelor of Science
-555,200,Chemistry,2017-06-06,Autumn Session,H,85.0,Science
-555,300,Maths,2017-06-06,Autumn Session,D,75.0,Science
-555,400,Biology,2017-11-01,Spring Session,H,85.0,Science
-666,400,Biology,2017-11-01,Spring Session,FNS,NaN,NaN
+student_id,unit_code,unit_name,outcome_date,teaching_calendar,grade,mark,student_cohort,course_attempt_status
+111,100,Physics,6/06/2017,Autumn Session,P,55,Engineering,ENROLLED
+111,200,Chemistry,6/11/2017,Autumn Session,H,85,Engineering,ENROLLED
+222,300,Maths,6/06/2017,Autumn Session,D,75,Engineering,COMPLETED
+222,100,Physics,1/11/2017,Spring Session,H,85,Engineering,COMPLETED
+222,200,Chemistry,1/11/2017,Spring Session,H,86,Engineering,COMPLETED
+333,300,Maths,1/11/2017,Spring Session,H,86,Engineering,INTERMIT
+333,100,Physics,2/06/2018,Autumn Session,P,50,Engineering,INTERMIT
+333,200,Chemistry,2/06/2018,Autumn Session,X,40,Engineering,INTERMIT
+333,400,Biology,2/06/2018,Autumn Session,P,50,Engineering,INTERMIT
+444,100,Physics,6/06/2017,Autumn Session,S,NaN,Bachelor of Science,LAPSED
+555,200,Chemistry,6/06/2017,Autumn Session,H,85,Science,DISCONTIN
+555,300,Maths,6/06/2017,Autumn Session,D,75,Science,DISCONTIN
+555,400,Biology,1/11/2017,Spring Session,H,85,Science,DISCONTIN
+666,400,Biology,1/11/2017,Spring Session,FNS,NaN,NaN,INACTIVE
