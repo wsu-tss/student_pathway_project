@@ -30,7 +30,6 @@ def get_data(data):
         print("ValueError: " + str(e))
         raise
 
-
 def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
     """Returns pandas dataframe with rows that are present in unit_list
 
@@ -124,13 +123,33 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
 
     return filtered_data
 
-def categorical_filter(data, columns=["course_attempt_status" ,"gender", "campus_code", "citizenship", "indigenous_type"]):
+def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gender", "campus_code", "citizenship", "indigenous_type"], set_codes=True):
     """Returns pandas dataframe with categorical variables from the columns
 
     Keyword arguments:
     data -- csv file of the data (example: data='students_data/combined_data/final_data.csv') or pandas DataFrame
-    columns -- list of columns in the data that requires categorical filtering
+    categorical_columns -- list of columns in the data that requires categorical filtering
+    set_codes -- Boolean to set the categorical column with numerical value (Default=True)
 
     Returns:
     filtered_data -- filtered data with the columns as categorical variables
     """
+
+    data = get_data(data)
+
+    filtered_data = copy.deepcopy(data)
+
+    for column in categorical_columns:
+        if column in data.columns:
+            try:
+                if set_codes:
+                    filtered_data[column] = pd.Categorical(data[column]).codes
+                else:
+                    filtered_data[column] = pd.Categorical(data[column])
+            except ValueError as e:
+                print("ValueError: " + str(e))
+                raise
+        else:
+            print(f"Column with name {column} does not exist in the dataset!\nSkipping {column}.")
+
+    return filtered_data

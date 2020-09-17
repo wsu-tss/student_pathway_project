@@ -1,4 +1,4 @@
-from studentpathway.dataprocessing.filters import cohort_filter, grades_filter, get_data
+from studentpathway.dataprocessing.filters import cohort_filter, grades_filter, get_data, categorical_filter
 import pandas as pd
 import numpy as np
 import math
@@ -87,3 +87,11 @@ def test_get_data0():
 def test_get_data1():
     filtered_data = get_data(data)
     assert(isinstance(filtered_data, pd.DataFrame))
+
+def test_categorical_filter0():
+    filtered_data = categorical_filter(data)
+    assert(filtered_data["course_attempt_status"].dtype == 'int8')
+
+def test_categorical_filter1():
+    filtered_data = categorical_filter(data, set_codes=False)
+    assert(filtered_data["course_attempt_status"].dtype == 'category')
