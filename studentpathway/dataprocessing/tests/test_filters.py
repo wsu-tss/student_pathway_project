@@ -1,4 +1,4 @@
-from studentpathway.dataprocessing.filters import cohort_filter, grades_filter
+from studentpathway.dataprocessing.filters import cohort_filter, grades_filter, get_data
 import pandas as pd
 import numpy as np
 import math
@@ -78,3 +78,12 @@ def test_grades_filter7():
 def test_grades_filter8():
     filtered_data = grades_filter(data, grades={50: 'P', 0: 'F'}, avoid={}, remove_missing=True)
     assert(filtered_data.shape[0] == 12)
+
+def test_get_data0():
+    data_df = pd.read_csv(data)
+    filtered_data = get_data(data_df)
+    assert(isinstance(filtered_data, pd.DataFrame))
+
+def test_get_data1():
+    filtered_data = get_data(data)
+    assert(isinstance(filtered_data, pd.DataFrame))
