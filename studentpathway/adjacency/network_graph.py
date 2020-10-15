@@ -138,7 +138,7 @@ def network_graph(matrix,
         print(e)
         print("Creating default network graph...")
         # Uses default values to display Graph
-        nx.draw(G, pos=position, with_labels=node_labels, connectionstyle='arc3, rad=0.1', edge_list=edges, width=2)
+        nx.draw(G, pos=position, connectionstyle='arc3, rad=0.1', edge_list=edges, width=2)
 
 
 
