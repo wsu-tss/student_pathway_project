@@ -4,4 +4,4 @@ matplotlib
 networkx
 pytest
 sphinx
-sphinx-rtd-theme
+sphinx_rtd_theme
