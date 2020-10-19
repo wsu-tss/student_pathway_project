@@ -1,6 +1,6 @@
-=======================
+#######################
 Student Pathway Project
-=======================
+#######################
 
 |build-status|
 
@@ -180,7 +180,8 @@ The `student_id` is used to merge the demographic data from `enrolments` and the
 
 The `final_data` is generated which is a combination of all the years of data.
 
-## Network Diagram
+Network Diagram
+---------------
 
 Use **Networkx** library to generate the network diagram.
 
@@ -210,7 +211,8 @@ Import the functions in the Jupyter notebook::
     from studentpathway.adjacency.network_graph import network_graph
 
 
-## Data Processing
+Data Processing
+^^^^^^^^^^^^^^^
 
 `dataprocessing` is a Python module developed for all the data processing operations.
 
