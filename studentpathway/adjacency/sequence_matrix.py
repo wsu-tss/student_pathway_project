@@ -6,14 +6,14 @@ import sys
 def sequence_matrix(data, sem_separator_month=8):
     """Return the sequence matrix.
 
-    Keyword arguments:
-    data -- Pandas dataframe for which the sequence matrix is to be generated.
-    sem_separator_month -- Month number used to separate the semesters. Default value is 8 for august.
+    :param data: Pandas dataframe for which the sequence matrix is to be generated.
+    :param sem_separator_month: Month number used to separate the semesters. Default value is 8 for august.
 
-    Returns:
-    M -- sequence matrix of m x n where m = rows of students and n = columns of units.
-    students -- list of all the students in the data.
-    units -- list of all the units in the data.
+    :returns M: sequence matrix of m x n where m = rows of students and n = columns of units.
+    :returns students: list of all the students in the data.
+    :returns units: list of all the units in the data.
+
+    :raises TypeError: The parameter to sequence_matrix must contain pandas dataframe.
     """
 
     # Calculating start time
