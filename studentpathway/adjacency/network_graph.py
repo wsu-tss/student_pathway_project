@@ -25,28 +25,25 @@ def network_graph(matrix,
                   esmall_thickness=1):
     """Saves and displays the network Diagram
 
-    Keyword arguments:
-    matrix -- adjacency matrix of type np.ndarray
-    units -- list of units present in the dataset
-    figure_size -- a tuple that determines the size of matplotlib diagram (Default=(50,50))
-    color_node -- color of nodes (Default="red")
-    color_edges -- cmap color used in matplotlib used for different shades of color (Default="blue")
-    resolution -- image resolution used in saving the diagram (Default=500)
-    file_location -- location to store the image (Default="images/test_dataset")
-    label_position -- Adjust the position of the labels on the edges (Default=0.3)
-    edge_width -- Size of the width of the edge (Default=2)
-    layout_type -- type of layout for the graph (Default="circular")
-    save_figure -- Boolean to save figure (Defaul=True)
-    show_weights -- Boolean to show weights on the network diagram (Default=True)
-    edge_radius -- Float value of the radius of the edge (Default=0.1)
-    size_node -- Size of nodes (Default=300)
-    edge_threshold -- Differentiates the edges in terms of thickness (Default=0.5)
-    esmall_transparency -- transparency for edges beyond (Default=0.5)
-    esmall_thickness -- thickness of underthreshold edges (Default=1)
+    :param matrix: adjacency matrix of type np.ndarray
+    :param units: list of units present in the dataset
+    :param figure_size: a tuple that determines the size of matplotlib diagram (Default=(50,50))
+    :param color_node: color of nodes (Default="red")
+    :param color_edges: cmap color used in matplotlib used for different shades of color (Default="blue")
+    :param resolution: image resolution used in saving the diagram (Default=500)
+    :param file_location: location to store the image (Default="images/test_dataset")
+    :param label_position: Adjust the position of the labels on the edges (Default=0.3)
+    :param edge_width: Size of the width of the edge (Default=2)
+    :param layout_type: type of layout for the graph (Default="circular")
+    :param save_figure: Boolean to save figure (Defaul=True)
+    :param show_weights: Boolean to show weights on the network diagram (Default=True)
+    :param edge_radius: Float value of the radius of the edge (Default=0.1)
+    :param size_node: Size of nodes (Default=300)
+    :param edge_threshold: Differentiates the edges in terms of thickness (Default=0.5)
+    :param esmall_transparency: transparency for edges beyond (Default=0.5)
+    :param esmall_thickness: thickness of underthreshold edges (Default=1)
 
-
-    Returns:
-    None
+    :raises TypeError: Input matrix is not of type numpy.ndarray.
     """
 
     # Calculating start time
