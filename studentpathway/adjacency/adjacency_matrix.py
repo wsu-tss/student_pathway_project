@@ -7,13 +7,11 @@ import copy
 def adjacency_matrix(M):
     """Return adjacency matrices
 
-    Keyword arguments:
-    M -- sequence matrix of (m, n) dimensions matrix of type numpy.ndarray
+    :param M: sequence matrix of (m, n) dimensions matrix of type numpy.ndarray
 
-    Returns:
-    _P -- graph projection matrix of (n, n) dimensions
-    P -- adjaceny matrix of (n, n) dimensions with subject-wise probability
-    Q -- adjacency_matrix of (n, n) dimensions with total probability
+    :returns _P: graph projection matrix of (n, n) dimensions
+    :returns P: adjaceny matrix of (n, n) dimensions with subject-wise probability
+    :returns Q: adjacency_matrix of (n, n) dimensions with total probability
     """
 
     # Calculating start time
