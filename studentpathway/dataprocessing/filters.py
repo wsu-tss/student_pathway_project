@@ -7,11 +7,9 @@ import numbers
 def get_data(data):
     """Reads the data as a csv or a pandas DataFrame and returns the DataFrame
 
-    Keyword arguments:
-    data -- path to the csv file or pandas DataFrame
+    :param data: path to the csv file or pandas DataFrame
 
-    Returns:
-    final_data -- pandas DataFrame
+    :returns final_data: pandas DataFrame
     """
 
     try:
@@ -33,14 +31,12 @@ def get_data(data):
 def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
     """Returns pandas dataframe with rows that are present in unit_list
 
-    Keyword arguments:
-    data -- csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
-    student_cohort -- student cohort to filter (example: student_cohort='Bachelor of Engineering (Honours)')
-    unit_list -- csv datafile of the unit list as per cohort (example: unit_list='units_data/engineering_data/engineering_units.csv') (Default=None)
-    exclusive_search -- Boolean that determines to search the student_cohort exclusively or partially (Default=True)
+    :param data: csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
+    :param student_cohort: student cohort to filter (example: student_cohort='Bachelor of Engineering (Honours)')
+    :param unit_list: csv datafile of the unit list as per cohort (example: unit_list='units_data/engineering_data/engineering_units.csv') (Default=None)
+    :param exclusive_search: Boolean that determines to search the student_cohort exclusively or partially (Default=True)
 
-    Returns:
-    filtered_data -- Pandas dataframe with filtered data
+    :returns filtered_data: Pandas dataframe with filtered data
     """
 
     # Reads the data from the csv file
@@ -80,14 +76,12 @@ def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
 def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S", 0: "F"}, avoid={'S'}, remove_missing=False):
     """Returns pandas dataframe with grades categorised
 
-    Keyword arguments:
-    data -- csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
-    grades -- dict of grades and lower threshold to the grades. (Default={85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S", 0: "F"})
-    avoid -- set of grades to be avoided while filtering. (Default={'S'})
-    remove_missing -- boolean to remove the rows whose marks and grades are missing. (Default=False)
+    :param data: csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
+    :param grades: dict of grades and lower threshold to the grades. (Default={85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S", 0: "F"})
+    :param avoid: set of grades to be avoided while filtering. (Default={'S'})
+    :param remove_missing: boolean to remove the rows whose marks and grades are missing. (Default=False)
 
-    Returns:
-    filtered_data -- Pandas dataframe with filtered data
+    :returns filtered_data: Pandas dataframe with filtered data
     """
 
     final_data = get_data(data)
@@ -126,13 +120,11 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
 def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gender", "campus_code", "citizenship", "indigenous_type"], set_codes=True):
     """Returns pandas dataframe with categorical variables from the columns
 
-    Keyword arguments:
-    data -- csv file of the data (example: data='students_data/combined_data/final_data.csv') or pandas DataFrame
-    categorical_columns -- list of columns in the data that requires categorical filtering
-    set_codes -- Boolean to set the categorical column with numerical value (Default=True)
+    :param data: csv file of the data (example: data='students_data/combined_data/final_data.csv') or pandas DataFrame
+    :param categorical_columns: list of columns in the data that requires categorical filtering
+    :param set_codes: Boolean to set the categorical column with numerical value (Default=True)
 
-    Returns:
-    filtered_data -- filtered data with the columns as categorical variables
+    :returns filtered_data: filtered data with the columns as categorical variables
     """
 
     data = get_data(data)
