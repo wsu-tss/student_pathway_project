@@ -3,11 +3,9 @@ import os
 def get_year_list(root_folder):
     """Returns list of years from the subfolder named as years
 
-    Keyword arguments:
-    root_folder -- path of the root folder to get the years from (example: root_folder="students_data")
+    :param root_folder: path of the root folder to get the years from (example: root_folder="students_data")
 
-    Returns:
-    years -- list of years
+    :returns years: list of years
     """
 
     try:
