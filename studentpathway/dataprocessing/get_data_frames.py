@@ -1,15 +1,13 @@
 import pandas as pd
 
 def get_data_frames(data_name, root_folder, years):
-    """Returns a list of dataframe of the requested data_name
+    """Returns a list of dataframe of the requested `data_name`.
 
-    Keyword arguments:
-    data_name -- The name of the data to be imported (example: data_name=enrolments)
-    root_folder -- The path to data folder where all the csv files are present (example: root_folder=students_data)
-    years -- A list of years which is the subfolder inside the root_folder
+    :param data_name: The name of the data to be imported (example: data_name=enrolments)
+    :param root_folder: The path to data folder where all the csv files are present (example: root_folder=students_data)
+    :param years: A list of years which is the subfolder inside the root_folder
 
-    Returns:
-    data -- list of all the pandas dataframe of the data_name
+    :returns data: list of all the pandas dataframe of the data_name
     """
 
     data = []
