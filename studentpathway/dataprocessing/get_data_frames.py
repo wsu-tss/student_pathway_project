@@ -1,20 +1,30 @@
 import pandas as pd
 
-def get_data_frames(data_name, root_folder, years):
-    """Returns a list of dataframe of the requested `data_name`.
+def get_data_frames(data_name, root_directory, years):
+    """Returns a list of dataframe of the requested ``data_name``.
+    The argument ``data_name`` takes the type of data. eg: ``data_name="enrolments"`` or ``data_name="results"``.
+    The function navigates to the ``root_directory`` and navigates every sub directory named after year of the dataset.
+    The subdirectories consist of year-wise directories which consists of the data as per the year.
+    The ``years`` argument is a list of all the years whose subdirectories are named after in the root directory of the dataset.
 
-    :param data_name: The name of the data to be imported (example: data_name=enrolments)
-    :param root_folder: The path to data folder where all the csv files are present (example: root_folder=students_data)
-    :param years: A list of years which is the subfolder inside the root_folder
+    :param data_name: The name of the data to be imported (example: data_name=enrolments).
+    :param root_directory: The path to data directory where all the csv files are present (example: root_directory=students_data).
+    :param years: A list of years which is the subfolder inside the root_directory.
 
-    :returns data: list of all the pandas dataframe of the data_name
+    :returns data: list of all the pandas dataframe of the data_name.
+
+    :Example:
+
+    >>> from studentpathway.data_processing import get_data_frames as gdf
+    >>> years = [2015, 2016, 2017, 2018]
+    >>> result_data = gdf.get_data_frames("results", "students_data", years)
     """
 
     data = []
     try:
         for i in range(len(years)):
             file_name = str(data_name) + str(years[i]) + ".csv"
-            path = root_folder + "/" + str(years[i]) + "/" + file_name
+            path = root_directory + "/" + str(years[i]) + "/" + file_name
             data.append(pd.read_csv(path))
         return data
     except TypeError as e:
