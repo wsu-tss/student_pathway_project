@@ -1,16 +1,25 @@
 import os
 
-def get_year_list(root_folder):
-    """Returns list of years from the subfolder named as years
+def get_year_list(root_directory):
+    """Returns list of ``years`` by browsing the root directory of the dataset.
+    The dataset is categorised in different subdirectories named after the year of the data.
+    The function looks at the name of the subdirectories and if it happens to be a year, it updates the ``years`` list.
 
-    :param root_folder: path of the root folder to get the years from (example: root_folder="students_data")
+    :param root_directory: path of the root folder to get the years from.
 
-    :returns years: list of years
+    :returns years: list of years.
+
+    :Example:
+
+    >>> from studentpathway.dataprocessing import get_year_list as gyl
+    >>> years = gyl.get_year_list("students_data")
+    >>> print(years)
+    [2015, 2016, 2017, 2018, 2019]
     """
 
     try:
         # List the subfolders
-        sub_folders = os.listdir(root_folder)
+        sub_folders = os.listdir(root_directory)
 
         years = []
 
