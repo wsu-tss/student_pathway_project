@@ -11,7 +11,7 @@ def get_data(data):
 
     :param data: path to the csv file or pandas DataFrame
 
-    :returns final_data: pandas DataFrame.
+    :return: pandas DataFrame.
 
     :raises ValueError: Check for the file path and make sure the file is a csv file.
 
@@ -53,7 +53,7 @@ def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
     :param unit_list: csv datafile of the unit list as per cohort (example: unit_list='units_data/engineering_data/engineering_units.csv') (Default=None)
     :param exclusive_search: Boolean that determines to search the student_cohort exclusively or partially (Default=True)
 
-    :returns filtered_data: Pandas dataframe with filtered data.
+    :return: Pandas dataframe with filtered data.
 
     :Example:
 
@@ -110,7 +110,12 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
     :param avoid: set of grades to be avoided while filtering. (Default={'S'})
     :param remove_missing: boolean to remove the rows whose marks and grades are missing. (Default=False)
 
-    :returns filtered_data: Pandas dataframe with filtered data
+    :return: Pandas dataframe with filtered data
+
+    :Example:
+
+    >>> from studentpathway.dataprocessing import filters
+    >>> data = filters.grades_filter("students_data/combined_data/eng_data.csv")
     """
 
     final_data = get_data(data)
@@ -155,7 +160,7 @@ def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gend
     :param categorical_columns: list of columns in the data that requires categorical filtering
     :param set_codes: Boolean to set the categorical column with numerical value (Default=True)
 
-    :returns filtered_data: filtered data with the columns as categorical variables.
+    :return: filtered data with the columns as categorical variables.
 
     :raises ValueError: Check for the file path and make sure the file is a csv file.
 

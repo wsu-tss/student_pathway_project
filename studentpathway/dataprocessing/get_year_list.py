@@ -7,7 +7,7 @@ def get_year_list(root_directory):
 
     :param root_directory: path of the root folder to get the years from.
 
-    :returns years: list of years.
+    :return: list of years.
 
     :Example:
 

@@ -11,7 +11,7 @@ def get_data_frames(data_name, root_directory, years):
     :param root_directory: The path to data directory where all the csv files are present (example: root_directory=students_data).
     :param years: A list of years which is the subfolder inside the root_directory.
 
-    :returns data: list of all the pandas dataframe of the data_name.
+    :return: list of all the pandas dataframe of the data_name.
 
     :Example:
 
