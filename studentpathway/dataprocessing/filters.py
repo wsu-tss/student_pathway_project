@@ -5,11 +5,22 @@ import numbers
 
 
 def get_data(data):
-    """Reads the data as a csv or a pandas DataFrame and returns the DataFrame
+    """Reads the data as a csv or a pandas DataFrame and returns the DataFrame.
+    Although this function is used in other functions to import the data from a csv file,
+    this can also work as a stand-alone function for reading a csv file.
 
     :param data: path to the csv file or pandas DataFrame
 
-    :returns final_data: pandas DataFrame
+    :returns final_data: pandas DataFrame.
+
+    :raises ValueError: Check for the file path and make sure the file is a csv file.
+
+    :Example:
+
+    >>> from studentpathway.dataprocessing import filters
+    >>> data = filters.get_data("students_data/combined_data/eng_data.csv")
+    >>> data.shape
+    (11379, 20)
     """
 
     try:
@@ -29,14 +40,27 @@ def get_data(data):
         raise
 
 def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
-    """Returns pandas dataframe with rows that are present in unit_list
+    """Returns pandas dataframe having the ``student_cohort`` value in the column student_cohort.
+    The filter also allows the process to filter the units from a list of units provided by ``unit_list``.
+    ``unit_list`` is by default ``None``, but also reads a csv file which has two columns: unit_code and unit_name.
+    The ``student_cohort`` can have almost similar degrees. eg: ``Bachelor of Engineering``, ``Bachelor of Engineering (Honours)``, etc.,
+    ``exclusive_search=True`` (Default) allows to filter by exact string provided by ``student_cohort``.
+    ``exclusive_search=False`` considers almost similar string. eg: ``Bachelor of Engineering`` and ``Bachelor of Engineering (Honours)
+    will be included in the ``filtered_data``.
 
     :param data: csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
     :param student_cohort: student cohort to filter (example: student_cohort='Bachelor of Engineering (Honours)')
     :param unit_list: csv datafile of the unit list as per cohort (example: unit_list='units_data/engineering_data/engineering_units.csv') (Default=None)
     :param exclusive_search: Boolean that determines to search the student_cohort exclusively or partially (Default=True)
 
-    :returns filtered_data: Pandas dataframe with filtered data
+    :returns filtered_data: Pandas dataframe with filtered data.
+
+    :Example:
+
+    >>> from studentpathway.dataprocessing import filters
+    >>> data = filters.cohort_filter("students_data/combined_data/final_data.csv", student_cohort="Bachelor of Engineering", unit_list="units_data/engineering_data/engineering_units.csv" ,exclusive_search=False)
+    >>> data.shape
+    (11379, 20)
     """
 
     # Reads the data from the csv file
@@ -74,7 +98,12 @@ def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
         return filtered_data
 
 def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S", 0: "F"}, avoid={'S'}, remove_missing=False):
-    """Returns pandas dataframe with grades categorised
+    """Returns pandas dataframe with grades categorised.
+    ``grades_filter`` maps the ``grades`` with key as the lower threshold for the value of the respective grades.
+    The ``grades`` has a default input and it is optional argument.
+    ``avoid`` is a set of all the grades that must be avoided during the filtering process
+    and avoids mapping the respective grade column with any the mapping.
+    ``remove_missing`` is a boolean, if true, allows to remove the entire row from the dataframe.
 
     :param data: csv datafile of the cohort-wise data (example: data='students_data/combined_data/final_data.csv')
     :param grades: dict of grades and lower threshold to the grades. (Default={85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S", 0: "F"})
@@ -118,13 +147,35 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
     return filtered_data
 
 def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gender", "campus_code", "citizenship", "indigenous_type"], set_codes=True):
-    """Returns pandas dataframe with categorical variables from the columns
+    """Returns pandas dataframe with categorical variables from the columns.
+    It takes ``categorical_columns`` as an argument which is to be converted to the categorical variable.
+    The categorical variable can be converted into the numerical value by ensuring ``set_codes`` is True.
 
     :param data: csv file of the data (example: data='students_data/combined_data/final_data.csv') or pandas DataFrame
     :param categorical_columns: list of columns in the data that requires categorical filtering
     :param set_codes: Boolean to set the categorical column with numerical value (Default=True)
 
-    :returns filtered_data: filtered data with the columns as categorical variables
+    :returns filtered_data: filtered data with the columns as categorical variables.
+
+    :raises ValueError: Check for the file path and make sure the file is a csv file.
+
+    :Example:
+
+    >>> from studentpathway.dataprocessing import filters
+    >>> data = filters.categorical_filter("students_data/combined_data/eng_data.csv")
+    >>> data.gender
+    0        1
+    1        1
+    2        1
+    3        1
+    4        1
+            ..
+    11374    1
+    11375    1
+    11376    1
+    11377    0
+    11378    0
+    Name: gender, Length: 11379, dtype: int8
     """
 
     data = get_data(data)
