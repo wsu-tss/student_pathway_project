@@ -8,7 +8,9 @@ Contents:
 
    readme
    installation
+   dataset
    modules
+   dataprocessing
    contributing
    authors
 
