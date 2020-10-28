@@ -15,17 +15,13 @@ def test_adjacency_matrix2():
     data.outcome_date = pd.to_datetime(data.outcome_date)
     M, students, units = sequence_matrix(data)
     m_dim = M.shape
-    _P, P, Q = adjacency_matrix(M)
+    _P, P = adjacency_matrix(M)
     assert (P.shape == (m_dim[1], m_dim[1]))
     assert (_P.shape == (m_dim[1], m_dim[1]))
-    assert (Q.shape == (m_dim[1], m_dim[1]))
     assert (_P[0,:] == np.array([0,1,0,0])).all()
     np.testing.assert_almost_equal(P[0,:], np.array([0, 0.25, 0, 0]), 2)
-    np.testing.assert_almost_equal(Q[0,:], np.array([0, 0.2, 0, 0]), 2)
-    np.testing.assert_almost_equal(Q[2,:], np.array([0.4, 0.4, 0, 0.4]), 2)
 
 def test_adjacency_matrix3():
     M = np.array([[1,0],[1,0],[1,0],[1,0],[1,0]])
-    _P, P, Q = adjacency_matrix(M)
+    _P, P = adjacency_matrix(M)
     np.testing.assert_almost_equal(P, np.array([[0,0],[0,0]]))
-    np.testing.assert_almost_equal(Q, np.array([[0,0],[0,0]]))

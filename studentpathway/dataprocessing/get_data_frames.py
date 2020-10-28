@@ -15,9 +15,9 @@ def get_data_frames(data_name, root_directory, years):
 
     :Example:
 
-    >>> from studentpathway.data_processing import get_data_frames as gdf
+    >>> import studentpathway as sp
     >>> years = [2015, 2016, 2017, 2018]
-    >>> result_data = gdf.get_data_frames("results", "students_data", years)
+    >>> result_data = sp.get_data_frames("results", "students_data", years)
     """
 
     data = []

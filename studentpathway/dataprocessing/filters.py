@@ -17,8 +17,8 @@ def get_data(data):
 
     :Example:
 
-    >>> from studentpathway.dataprocessing import filters
-    >>> data = filters.get_data("students_data/combined_data/eng_data.csv")
+    >>> import studentpathway as sp
+    >>> data = sp.get_data("students_data/combined_data/eng_data.csv")
     >>> data.shape
     (11379, 20)
     """
@@ -57,8 +57,8 @@ def cohort_filter(data, student_cohort, unit_list=None, exclusive_search=True):
 
     :Example:
 
-    >>> from studentpathway.dataprocessing import filters
-    >>> data = filters.cohort_filter("students_data/combined_data/final_data.csv", student_cohort="Bachelor of Engineering", unit_list="units_data/engineering_data/engineering_units.csv" ,exclusive_search=False)
+    >>> import studentpathway as sp
+    >>> data = sp.cohort_filter("students_data/combined_data/final_data.csv", student_cohort="Bachelor of Engineering", unit_list="units_data/engineering_data/engineering_units.csv" ,exclusive_search=False)
     >>> data.shape
     (11379, 20)
     """
@@ -114,8 +114,8 @@ def grades_filter(data, grades = {85:"H", 75: "D", 65:"C", 50: "P", np.NaN: "S",
 
     :Example:
 
-    >>> from studentpathway.dataprocessing import filters
-    >>> data = filters.grades_filter("students_data/combined_data/eng_data.csv")
+    >>> import studentpathway as sp
+    >>> data = sp.grades_filter("students_data/combined_data/eng_data.csv")
     """
 
     final_data = get_data(data)
@@ -166,8 +166,8 @@ def categorical_filter(data, categorical_columns=["course_attempt_status" ,"gend
 
     :Example:
 
-    >>> from studentpathway.dataprocessing import filters
-    >>> data = filters.categorical_filter("students_data/combined_data/eng_data.csv")
+    >>> import studentpathway as sp
+    >>> data = sp.categorical_filter("students_data/combined_data/eng_data.csv")
     >>> data.gender
     0        1
     1        1

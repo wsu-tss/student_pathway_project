@@ -44,6 +44,15 @@ def network_graph(matrix,
     :param esmall_thickness: thickness of underthreshold edges (Default=1)
 
     :raises TypeError: Input matrix is not of type numpy.ndarray.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> import pandas as pd
+    >>> data = pd.read_csv("students_data/combined_data/eng_data.csv")
+    >>> M, students, units = sp.sequence_matrix(data)
+    >>> _P, P = sp.adjacency_matrix(M)
+    >>> sp.network_graph(P, units, save_figure=False)
     """
 
     # Calculating start time
