@@ -14,6 +14,13 @@ def sequence_matrix(data, sem_separator_month=8):
     :returns units: list of all the units in the data.
 
     :raises TypeError: The parameter to sequence_matrix must contain pandas dataframe.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> import pandas as pd
+    >>> data = pd.read_csv("students_data/combined_data/eng_data.csv")
+    >>> M, students, units = sp.sequence_matrix(data)
     """
 
     # Calculating start time
