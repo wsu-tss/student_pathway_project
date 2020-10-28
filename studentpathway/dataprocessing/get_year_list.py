@@ -11,8 +11,8 @@ def get_year_list(root_directory):
 
     :Example:
 
-    >>> from studentpathway.dataprocessing import get_year_list as gyl
-    >>> years = gyl.get_year_list("students_data")
+    >>> import studentpathway as sp
+    >>> years = sp.get_year_list("students_data")
     >>> print(years)
     [2015, 2016, 2017, 2018, 2019]
     """
