@@ -9,8 +9,16 @@ def adjacency_matrix(M):
 
     :param M: sequence matrix of (m, n) dimensions matrix of type numpy.ndarray
 
-    :returns _P: graph projection matrix of (n, n) dimensions
-    :returns P: adjaceny matrix of (n, n) dimensions with subject-wise probability
+    :returns _P: graph projection matrix of (n, n) dimensions.
+    :returns P: adjaceny matrix of (n, n) dimensions with subject-wise probability.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> import pandas as pd
+    >>> data = pd.read_csv("students_data/combined_data/eng_data.csv")
+    >>> M, students, units = sp.sequence_matrix(data)
+    >>> _P, P = sp.adjacency_matrix(M)
     """
 
     # Calculating start time
