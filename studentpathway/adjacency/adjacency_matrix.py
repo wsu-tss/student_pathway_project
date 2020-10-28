@@ -55,7 +55,7 @@ def adjacency_matrix(M):
                 P[i][j] = 0
                 Q[i][j] = 0
             else:
-                P[i][j] = _P[i][j]/Mj_total[j]
+                P[i][j] = _P[i][j]/Mj_total[i]
                 Q[i][j] = _P[i][j]/total_students
 
     print(u'\N{check mark}')
