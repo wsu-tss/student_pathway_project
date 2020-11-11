@@ -3,6 +3,7 @@ import numpy as np
 from datetime import datetime
 import sys
 
+
 def sequence_matrix(data, sem_separator_month=8):
     """Return the sequence matrix.
 
@@ -75,7 +76,6 @@ def sequence_matrix(data, sem_separator_month=8):
         outcome_years = student_data["outcome_date"].dt.year.unique()
         outcome_months = student_data["outcome_date"].dt.month.unique()
 
-        # alocating semester value
         semester_preference = 1
 
         # Iterating through the list of units for the student
@@ -85,7 +85,7 @@ def sequence_matrix(data, sem_separator_month=8):
             unit_outcome_month = student_data.iloc[i].outcome_date.month
 
             # Checking semester preference
-            if (unit_outcome_month > sem_separator_month and spring == False):
+            if (unit_outcome_month > sem_separator_month and not spring):
                 semester_preference += 1
                 spring = True
             elif (unit_outcome_month < sem_separator_month):
