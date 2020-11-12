@@ -3,6 +3,7 @@ import numpy as np
 from datetime import datetime
 import sys
 
+
 def sequence_matrix(data, sem_separator_month=8):
     """Return the sequence matrix.
 
@@ -69,14 +70,16 @@ def sequence_matrix(data, sem_separator_month=8):
         student_data = student_data.sort_values(by=["outcome_date"]).reset_index(drop=True)
 
         # list of units with unit_name
-        student_units = student_data["unit_name"].unique()
+        student_units = student_data["unit_name"]
 
         # getting the outcome years of the results
         outcome_years = student_data["outcome_date"].dt.year.unique()
         outcome_months = student_data["outcome_date"].dt.month.unique()
 
-        # alocating semester value
-        semester_preference = 1
+        # Initialising
+        current_year = 0
+        past_month = 0
+        semester_preference = 0
 
         # Iterating through the list of units for the student
         for i in range(len(student_units)):
@@ -84,15 +87,13 @@ def sequence_matrix(data, sem_separator_month=8):
             unit_outcome_year = student_data.iloc[i].outcome_date.year
             unit_outcome_month = student_data.iloc[i].outcome_date.month
 
-            # Checking semester preference
-            if (unit_outcome_month > sem_separator_month and spring == False):
-                semester_preference += 1
-                spring = True
-            elif (unit_outcome_month < sem_separator_month):
-                spring = False
 
-            # Gets the preference of the unit as per the year
-            preference = outcome_years.tolist().index(unit_outcome_year) + semester_preference
+            # sorting the units as per the semesters
+            if unit_outcome_year > current_year or unit_outcome_month > sem_separator_month:
+                if past_month is not unit_outcome_month:
+                    semester_preference += 1
+                    past_month = unit_outcome_month
+                current_year = unit_outcome_year
 
             # Getting the student row in the matrix
             student_index = students.tolist().index(student)
@@ -101,7 +102,7 @@ def sequence_matrix(data, sem_separator_month=8):
             unit_index = units.tolist().index(unit_name)
 
             # Updating the sequence matrix
-            M[student_index][unit_index] = preference
+            M[student_index][unit_index] = semester_preference
 
     print(u'\N{check mark}')
 
