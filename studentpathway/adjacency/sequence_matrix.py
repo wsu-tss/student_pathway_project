@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import sys
-import pdb
 
 
 def sequence_matrix(data, sem_separator_month=8):
@@ -89,16 +88,13 @@ def sequence_matrix(data, sem_separator_month=8):
             unit_outcome_month = student_data.iloc[i].outcome_date.month
 
 
-            # sorting the units as per the semesters 
+            # sorting the units as per the semesters
             if unit_outcome_year > current_year or unit_outcome_month > sem_separator_month:
                 if past_month is not unit_outcome_month:
                     semester_preference += 1
                     past_month = unit_outcome_month
                 current_year = unit_outcome_year
 
-            # Gets the preference of the unit as per the year
-            # preference = outcome_years.tolist().index(unit_outcome_year) + semester_preference
-            preference = semester_preference
             # Getting the student row in the matrix
             student_index = students.tolist().index(student)
 
@@ -106,7 +102,7 @@ def sequence_matrix(data, sem_separator_month=8):
             unit_index = units.tolist().index(unit_name)
 
             # Updating the sequence matrix
-            M[student_index][unit_index] = preference
+            M[student_index][unit_index] = semester_preference
 
     print(u'\N{check mark}')
 
