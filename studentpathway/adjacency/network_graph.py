@@ -35,7 +35,7 @@ def network_graph(matrix,
     :param label_position: Adjust the position of the labels on the edges (Default=0.3)
     :param edge_width: Size of the width of the edge (Default=2)
     :param layout_type: type of layout for the graph (Default="circular")
-    :param save_figure: Boolean to save figure (Defaul=True)
+    :param save_figure: Boolean to save figure (Default=True)
     :param show_weights: Boolean to show weights on the network diagram (Default=True)
     :param edge_radius: Float value of the radius of the edge (Default=0.1)
     :param size_node: Size of nodes (Default=300)
@@ -52,7 +52,7 @@ def network_graph(matrix,
     >>> data = pd.read_csv("students_data/combined_data/eng_data.csv")
     >>> M, students, units = sp.sequence_matrix(data)
     >>> _P, P = sp.adjacency_matrix(M)
-    >>> sp.network_graph(P, units, save_figure=False)
+    >>> sp.network_graph(P, units, figure_size=(100,100), resolution=100, save_figure=True, show_weights=False, esmall_transparency=0.1, edge_threshold=0.1, color_edges='k', edge_radius=0.1)
     """
 
     # Calculating start time
