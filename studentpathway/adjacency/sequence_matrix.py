@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import sys
+from tqdm import tqdm
 
 
 def sequence_matrix(data, sem_separator_month=8):
@@ -39,9 +40,6 @@ def sequence_matrix(data, sem_separator_month=8):
     data.outcome_date = pd.to_datetime(data.outcome_date)
 
     print(u'\N{check mark}')
-
-    # Assigning spring value. It indicates if the Spring semester is ON.
-    spring = False
 
     # Number of units
     unit_number = data["unit_name"].nunique()
