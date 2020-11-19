@@ -3,6 +3,8 @@ import numpy as np
 from datetime import datetime
 import sys
 import copy
+from tqdm import tqdm
+
 
 def adjacency_matrix(M):
     """Return adjacency matrices
@@ -47,9 +49,9 @@ def adjacency_matrix(M):
     Mj = np.where(M > 0, 1, 0)
     Mj_total = np.sum(Mj, axis=0)
 
+    # Initiating progress bar
+    loop = tqdm(total=_P_dim, position=0, leave=False)
     # P matrix generation
-    print("Generating matrices...", end="")
-
     for i in range(_P_dim):
         for j in range(_P_dim):
             delta = M[:, j] - M[:, i]
@@ -60,7 +62,10 @@ def adjacency_matrix(M):
             else:
                 P[i][j] = _P[i][j]/Mj_total[i]
 
-    print(u'\N{check mark}')
+        loop.set_description("Generating...".format(i+1))
+        loop.update(1)
+
+    loop.close()
 
     # Calculating elapsed time
     elapsed_time = datetime.now() - start_time
