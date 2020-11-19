@@ -58,8 +58,13 @@ def sequence_matrix(data, sem_separator_month=8):
 
     print("Initiating sequence matrix generation...", end="")
 
+    # Initiating progress bar
+    loop = tqdm(total=data.shape[0], position=0, leave=False)
+
     # Iterating through the list of students
     for student in students:
+        # loop counter variable
+        k = 0
 
         # Getting the dataframe of the student from students list
         student_data = data.loc[data["student_id"] == student]
@@ -102,7 +107,11 @@ def sequence_matrix(data, sem_separator_month=8):
             # Updating the sequence matrix
             M[student_index][unit_index] = semester_preference
 
-    print(u'\N{check mark}')
+            loop.set_description("Loading...".format(k))
+            k += 1
+            loop.update(1)
+
+    loop.close()
 
     # Calculating elapsed time
     elapsed_time = datetime.now() - start_time
