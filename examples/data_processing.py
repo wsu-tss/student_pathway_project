@@ -2,9 +2,9 @@ import pandas as pd
 import os
 import sys
 import hashlib
-import studentpathway as sp
-
 sys.path.append('../')
+
+import studentpathway as sp
 
 # Getting the results and enrolments data
 
@@ -24,7 +24,7 @@ sys.path.append('../')
 
 
 # Root directory of the data
-ROOT_FOLDER = "students_data"
+ROOT_FOLDER = "../students_data"
 RESULTS = "results"
 ENROLMENTS = "enrolments"
 
