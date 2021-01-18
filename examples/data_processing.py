@@ -4,6 +4,15 @@ import sys
 import hashlib
 sys.path.append('../')
 
+
+# Importing studentpathway module
+# -------------------------------
+#
+# Import `studentpathway` module after `sys.path.append('../')`.
+# Use `sys.path.append('../')` only if running the code in the `example` directory
+# or any other subdirectories.
+# If running the code in the root inside a jupyter notebook,
+# no need to use `sys.path.append(../)`
 import studentpathway as sp
 
 # Getting the results and enrolments data
@@ -20,7 +29,15 @@ import studentpathway as sp
 # * Results from 2015: `results2015.csv`
 # * Enrolments from 2015: `enrolments2015.csv`
 
-# print(sp.get_data_frames.__doc__)
+
+# Path constants
+# --------------
+#
+# `../` is used before `students_data` assigned to `ROOT_FOLDER`.
+# This is done because this python file is inside the `examples` directory.
+# If running this code inside a jupyter notebook in the root directory,
+# Then no need to include `../` before the path.
+# Please be mindful about the path or you may get a FileNotFoundError.
 
 
 # Root directory of the data
@@ -28,8 +45,9 @@ ROOT_FOLDER = "../students_data"
 RESULTS = "results"
 ENROLMENTS = "enrolments"
 
-### Year list from the sub folders of data
-
+# Year list from the sub folders of data
+# --------------------------------------
+#
 # The data for the enrolments and results are stored in subfolder in the years.
 # Instead of hard coding the years in an array, the following section finds the years by the subfolder name which needs to be in years.
 # They years are converted into `int` datatype and sorted in `years` list.
@@ -37,6 +55,7 @@ ENROLMENTS = "enrolments"
 years = sp.get_year_list(ROOT_FOLDER)
 
 # Result data
+# -----------
 
 results_data = []
 
@@ -53,6 +72,7 @@ for i in range(len(results_data)):
 results = pd.concat(results_data, axis=0, sort=False).reset_index(drop=True)
 
 # Enrolment data
+# --------------
 
 # Combining the enrolment data
 
@@ -80,7 +100,8 @@ final_data['course_start_date'] = pd.to_datetime(final_data.course_start_date)
 # Organising date for date_of_birth
 final_data['date_of_birth'] = pd.to_datetime(final_data.date_of_birth)
 
-# ## Duplicate data removal from final data
+# Duplicate data removal from final data
+# --------------------------------------
 #
 # Run the following section after merging the **results** and **enrolments**.
 #
@@ -88,7 +109,8 @@ final_data['date_of_birth'] = pd.to_datetime(final_data.date_of_birth)
 
 final_data = final_data.drop_duplicates().reset_index(drop=True)
 
-# # Encrypt Student ID
+# Encrypt Student ID
+# ------------------
 #
 # The following code must be run before saving the `final_data`.
 #
