@@ -74,6 +74,18 @@ results = pd.concat(results_data, axis=0, sort=False).reset_index(drop=True)
 # Enrolment data
 # --------------
 
+# Reading Enrolment files
+
+enrolment_data = []
+
+enrolment_data = get_data_frames(ENROLMENTS, ROOT_FOLDER, years)
+
+# Standardising the columns
+enrolments_column_header = ["student_id", "course_code", "student_cohort", "school_name", "course_start_date", "course_attempt_status", "gender", "campus_code", "campus_name", "citizenship", "indigenous_type", "date_of_birth", "discontinued_date", "lapsed_date"]
+
+for i in range(len(enrolment_data)):
+    enrolment_data[i].columns = enrolments_column_header
+
 # Combining the enrolment data
 
 enrolments = pd.concat(enrolment_data, axis=0, sort=False).reset_index(drop=True)
