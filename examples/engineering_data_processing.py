@@ -45,5 +45,5 @@ sp.network_graph(P,
                  esmall_transparency=0.1,
                  edge_threshold=0.2,
                  color_edges='k',
-                 file_location="../images"
+                 file_location="../images",
                  edge_radius=0.1)
