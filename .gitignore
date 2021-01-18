@@ -6,6 +6,7 @@ adjacency_method.ipynb
 networkx_trials.ipynb
 network_test_data.ipynb
 *.ipynb
+notebooks/
 
 # Images
 images/
