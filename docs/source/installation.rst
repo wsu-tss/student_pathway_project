@@ -112,10 +112,10 @@ While creating a new notebook, select ``venv`` instead of ``Python3``.
 
 
 Possible Errors while installing packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------
 
 Issues with installing Tensorflow
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While working on the Windows OS, if the path of the installation inside the package folder exceeds more than 260 characters,
 then the installation will not be complete.
