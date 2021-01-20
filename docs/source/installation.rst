@@ -109,3 +109,28 @@ Changing the kernel in jupyter Notebook
 On the menu bar select ``Kernel > Change kernel > venv``.
 
 While creating a new notebook, select ``venv`` instead of ``Python3``.
+
+
+Possible Errors while installing packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Issues with installing Tensorflow
+---------------------------------
+
+While working on the Windows OS, if the path of the installation inside the package folder exceeds more than 260 characters,
+then the installation will not be complete.
+
+To fix this error refer the following steps:
+
+1. Hit the Windows key, type ``gpedit.msc`` and press Enter.
+2. Navigate to ``Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem``.
+3. Double click the ``Enable Win32 long paths`` option and enable it.
+
+If the option ``Enable Win32 long paths`` is unavailable, change the project location on your local machine
+or reduce the character name of the project folder.
+
+This error was encountered while installing ``tensorflow`` module.
+
+Refer the `issue`_
+
+.. _issue: https://github.com/tensorflow/tensorflow/issues/24835
