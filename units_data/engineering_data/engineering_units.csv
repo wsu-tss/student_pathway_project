@@ -1,185 +1,185 @@
-unit_code,unit_name
-200237,Mathematics for Engineers 1
-300027,Engineering Computing
-300963,Engineering Physics
-300964,Introduction to Engineering Practice
-200238,Mathematics for Engineers 2
-300021,Electrical Fundamentals
-300463,Fundamentals of Mechanics
-300965,Engineering Materials
-300738,Surveying for Engineers
-300040,Mechanics of Materials
-300762,Fluid Mechanics
-300985,Soil Mechanics
-300984,Pavement Materials and Design
-300733,Introduction to Structural Engineering
-300737,Environmental Engineering
-300765,Hydraulics
-300732,Structural Analysis
-300983,Surface Water Hydrology
-300736,Concrete Structures (UG)
-300666,Advanced Engineering Topic 1
-300730,Steel Structures
-301001,Engineering Geomechanics
-300667,Advanced Engineering Topic 2
-300488,Numerical Methods in Engineering
-300741,Industrial Experience (Engineering)
-300971,Engineering Project 1
-301245,Final Year Project 1 (UG Engineering)
-300969,Advanced Engineering Thesis 1: Preliminary Investigations
-300972,Engineering Project 2
-301246,Final Year Project 2 (UG Engineering)
-300982,Transportation Engineering
-300970,Advanced Engineering Thesis 2: Detailed Investigations
-300986,Applied Mechanics
-300987,Composite Structures
-300988,Highway Infrastructure
-300989,Hydrogeology
-300990,Pile Foundations
-300991,Statistical Hydrology
-300798,Sustainability and Risk Engineering
-300739,Timber Structures (UG)
-300994,Waste Management
-300992,Water and Wastewater Treatment
-300993,Water Resource Engineering
-301158,Modern Construction Enterprises
-301159,Modern Construction Projects
-301089,Special Technical Project
-300738,Surveying for Engineers
-300040,Mechanics of Materials
-301208,Building Measurement
-300985,Soil Mechanics
-300984,Pavement Materials and Design
-300733,Introduction to Structural Engineering
-301207,Building Estimates and Tendering
-300732,Structural Analysis
-300728,Construction Planning
-300736,Concrete Structures (UG)
-300666,Advanced Engineering Topic 1
-300730,Steel Structures
-300727,Project Management
-301001,Engineering Geomechanics
-300667,Advanced Engineering Topic 2
-300741,Industrial Experience (Engineering)
-301245,Final Year Project 1 (UG Engineering)
-300969,Advanced Engineering Thesis 1: Preliminary Investigations
-200471,Construction Technology 5 (Envelope)
-301246,Final Year Project 2 (UG Engineering)
-300970,Advanced Engineering Thesis 2: Detailed Investigations
-300725,Construction Technology 6 (Services)
-300986,Applied Mechanics
-300987,Composite Structures
-300988,Highway Infrastructure
-300990,Pile Foundations
-300739,Timber Structures (UG)
-301158,Modern Construction Enterprises
-301159,Modern Construction Projects
-301089,Special Technical Project
-300005,Circuit Theory
-300025,Electronics
-300057,Signals and Systems
-300018,Digital Systems 1
-300076,Microprocessor Systems
-300481,Engineering Electromagnetics
-300052,Power and Machines
-300009,Control Systems
-300007,Communication Systems
-300071,Electrical Machines 1
-300666,Advanced Engineering Topic 1
-300771,Power Systems
-300069,Digital Signal Processing
-300667,Advanced Engineering Topic 2
-300070,Electrical Drives
-300741,Industrial Experience (Engineering)
-300971,Engineering Project 1
-301245,Final Year Project 1 (UG Engineering)
-300772,Power Electronics
-300969,Advanced Engineering Thesis 1: Preliminary Investigations
-300972,Engineering Project 2
-301246,Final Year Project 2 (UG Engineering)
-300075,Instrumentation and Measurement
-300970,Advanced Engineering Thesis 2: Detailed Investigations
-300997,Data Communications
-300019,Digital Systems 2
-300029,Engineering Visualization
-300995,Power Quality
-300489,Radio and Satellite Communication
-300996,Smart Grids and Distributed Generation
-300998,Sustainable Energy Systems
-300065,Wireless Communications
-301158,Modern Construction Enterprises
-301159,Modern Construction Projects
-301089,Special Technical Project
-300035,Kinematics and Kinetics of Machines
-300040,Mechanics of Materials
-300762,Fluid Mechanics
-301079,Graphics 3: 3D Engineering Specifications and Visualisation
-301290,Design Graphics: Communication for Manufacture
-300480,Dynamics of Mechanical Systems
-300735,Automated Manufacturing
-300760,Thermodynamics and Heat Transfer
-300761,Advanced Mechanics of Materials
-300764,Mechanical Design
-300763,Advanced Dynamics
-300666,Advanced Engineering Topic 1
-300759,Thermal and Fluid Engineering
-300488,Numerical Methods in Engineering
-300667,Advanced Engineering Topic 2
-300487,Mechatronic Design
-300741,Industrial Experience (Engineering)
-300971,Engineering Project 1
-301245,Final Year Project 1 (UG Engineering)
-300056,Robotics
-300969,Advanced Engineering Thesis 1: Preliminary Investigations
-300972,Engineering Project 2
-301246,Final Year Project 2 (UG Engineering)
-300970,Advanced Engineering Thesis 2: Detailed Investigations
-301000,Computer Aided Engineering
-300999,Computational Fluid Dynamics
-301287,Design Graphics: Engineering Documentation
-301091,Graphics 4: Kinetic Narratives
-300570,Human-Computer Interaction
-300044,Microcontrollers and PLCs
-300043,Mobile Robotics
-301081,Sustainable Design 2: Product Service Systems
-301158,Modern Construction Enterprises
-301159,Modern Construction Projects
-301089,Special Technical Project
-301076,Graphics 2: Visual Simulation
-300035,Kinematics and Kinetics of Machines
-300040,Mechanics of Materials
-300005,Circuit Theory
-300018,Digital Systems 1
-300480,Dynamics of Mechanical Systems
-300735,Automated Manufacturing
-300052,Power and Machines
-300044,Microcontrollers and PLCs
-300764,Mechanical Design
-300763,Advanced Dynamics
-300025,Electronics
-300666,Advanced Engineering Topic 1
-300043,Mobile Robotics
-300667,Advanced Engineering Topic 2
-300487,Mechatronic Design
-300741,Industrial Experience (Engineering)
-300971,Engineering Project 1
-301245,Final Year Project 1 (UG Engineering)
-300056,Robotics
-300969,Advanced Engineering Thesis 1: Preliminary Investigations
-300972,Engineering Project 2
-301246,Final Year Project 2 (UG Engineering)
-300075,Instrumentation and Measurement
-300970,Advanced Engineering Thesis 2: Detailed Investigations
-300999,Computational Fluid Dynamics
-301000,Computer Aided Engineering
-301290,Design Graphics: Communication for Manufacture
-301287,Design Graphics: Engineering Documentation
-300029,Engineering Visualization
-300762,Fluid Mechanics
-300759,Thermal and Fluid Engineering
-300760,Thermodynamics and Heat Transfer
-301158,Modern Construction Enterprises
-301159,Modern Construction Projects
-301089,Special Technical Project
-301076,Graphics 2: Visual Simulation
-301079,Graphics 3: 3D Engineering Specifications and Visualisation
+unit_code,unit_name,year,semester,program
+200237,Mathematics for Engineers 1,1,Autumn,Common
+300027,Engineering Computing,1,Autumn,Common
+300963,Engineering Physics,1,Autumn,Common
+300964,Introduction to Engineering Practice,NA,Autumn,Common
+200238,Mathematics for Engineers 2,1,Spring,Common
+300021,Electrical Fundamentals,NA,Spring,Common
+300463,Fundamentals of Mechanics,NA,Spring,Common
+300965,Engineering Materials,NA,Spring,Common
+300738,Surveying for Engineers,2,Autumn,Civil
+300040,Mechanics of Materials,2,Autumn,Civil
+300762,Fluid Mechanics,2,Autumn,Civil
+300985,Soil Mechanics,2,Autumn,Civil
+300984,Pavement Materials and Design,2,Spring,Civil
+300733,Introduction to Structural Engineering,2,Spring,Civil
+300737,Environmental Engineering,2,Spring,Civil
+300765,Hydraulics,2,Spring,Civil
+300732,Structural Analysis,3,Autumn,Civil
+300983,Surface Water Hydrology,AU,Autumn,Civil
+300736,Concrete Structures (UG),3,Autumn,Civil
+300666,Advanced Engineering Topic 1,3,Autumn,Civil
+300730,Steel Structures,3,Spring,Civil
+301001,Engineering Geomechanics,3,Spring,Civil
+300667,Advanced Engineering Topic 2,3,Spring,Civil
+300488,Numerical Methods in Engineering,3,Spring,Civil
+300741,Industrial Experience (Engineering),3,Spring,Civil
+300971,Engineering Project 1,4,Autumn,Civil
+301245,Final Year Project 1 (UG Engineering),4,Autumn,Civil
+300969,Advanced Engineering Thesis 1: Preliminary Investigations,4,Autumn,Civil
+300972,Engineering Project 2,4,Spring,Civil
+301246,Final Year Project 2 (UG Engineering),4,Spring,Civil
+300982,Transportation Engineering,4,Spring,Civil
+300970,Advanced Engineering Thesis 2: Detailed Investigations,4,Spring,Civil
+300986,Applied Mechanics,AU,NA,Civil
+300987,Composite Structures,AU,NA,Civil
+300988,Highway Infrastructure,AU,NA,Civil
+300989,Hydrogeology,AU,NA,Civil
+300990,Pile Foundations,AU,NA,Civil
+300991,Statistical Hydrology,AU,NA,Civil
+300798,Sustainability and Risk Engineering,AU,NA,Civil
+300739,Timber Structures (UG),AU,NA,Civil
+300994,Waste Management,AU,NA,Civil
+300992,Water and Wastewater Treatment,AU,NA,Civil
+300993,Water Resource Engineering,AU,NA,Civil
+301158,Modern Construction Enterprises,OE,NA,Civil
+301159,Modern Construction Projects,OE,NA,Civil
+301089,Special Technical Project,OE,NA,Civil
+300738,Surveying for Engineers,2,Autumn,Construction
+300040,Mechanics of Materials,2,Autumn,Construction
+301208,Building Measurement,2,Autumn,Construction
+300985,Soil Mechanics,2,Autumn,Construction
+300984,Pavement Materials and Design,2,Spring,Construction
+300733,Introduction to Structural Engineering,2,Spring,Construction
+301207,Building Estimates and Tendering,2,Spring,Construction
+300732,Structural Analysis,3,Autumn,Construction
+300728,Construction Planning,3,Autumn,Construction
+300736,Concrete Structures (UG),3,Autumn,Construction
+300666,Advanced Engineering Topic 1,3,Autumn,Construction
+300730,Steel Structures,3,Spring,Construction
+300727,Project Management,3,Spring,Construction
+301001,Engineering Geomechanics,3,Spring,Construction
+300667,Advanced Engineering Topic 2,3,Spring,Construction
+300741,Industrial Experience (Engineering),3,Spring,Construction
+301245,Final Year Project 1 (UG Engineering),4,Autumn,Construction
+300969,Advanced Engineering Thesis 1: Preliminary Investigations,4,Autumn,Construction
+200471,Construction Technology 5 (Envelope),4,Autumn,Construction
+301246,Final Year Project 2 (UG Engineering),4,Spring,Construction
+300970,Advanced Engineering Thesis 2: Detailed Investigations,4,Spring,Construction
+300725,Construction Technology 6 (Services),4,Spring,Construction
+300986,Applied Mechanics,AU,NA,Construction
+300987,Composite Structures,AU,NA,Construction
+300988,Highway Infrastructure,AU,NA,Construction
+300990,Pile Foundations,AU,NA,Construction
+300739,Timber Structures (UG),AU,NA,Construction
+301158,Modern Construction Enterprises,OE,NA,Construction
+301159,Modern Construction Projects,OE,NA,Construction
+301089,Special Technical Project,OE,NA,Construction
+300005,Circuit Theory,2,Autumn,Electrical
+300025,Electronics,2,Autumn,Electrical
+300057,Signals and Systems,2,Autumn,Electrical
+300018,Digital Systems 1,2,Autumn,Electrical
+300076,Microprocessor Systems,2,Spring,Electrical
+300481,Engineering Electromagnetics,2,Spring,Electrical
+300052,Power and Machines,2,Spring,Electrical
+300009,Control Systems,2,Spring,Electrical
+300007,Communication Systems,3,Autumn,Electrical
+300071,Electrical Machines 1,3,Autumn,Electrical
+300666,Advanced Engineering Topic 1,3,Autumn,Electrical
+300771,Power Systems,3,Spring,Electrical
+300069,Digital Signal Processing,3,Spring,Electrical
+300667,Advanced Engineering Topic 2,3,Spring,Electrical
+300070,Electrical Drives,3,Spring,Electrical
+300741,Industrial Experience (Engineering),3,Spring,Electrical
+300971,Engineering Project 1,4,Autumn,Electrical
+301245,Final Year Project 1 (UG Engineering),4,Autumn,Electrical
+300772,Power Electronics,4,Autumn,Electrical
+300969,Advanced Engineering Thesis 1: Preliminary Investigations,4,Autumn,Electrical
+300972,Engineering Project 2,4,Spring,Electrical
+301246,Final Year Project 2 (UG Engineering),4,Spring,Electrical
+300075,Instrumentation and Measurement,4,Spring,Electrical
+300970,Advanced Engineering Thesis 2: Detailed Investigations,4,Spring,Electrical
+300997,Data Communications,AU,NA,Electrical
+300019,Digital Systems 2,AU,NA,Electrical
+300029,Engineering Visualization,AU,NA,Electrical
+300995,Power Quality,AU,NA,Electrical
+300489,Radio and Satellite Communication,AU,NA,Electrical
+300996,Smart Grids and Distributed Generation,AU,NA,Electrical
+300998,Sustainable Energy Systems,AU,NA,Electrical
+300065,Wireless Communications,AU,NA,Electrical
+301158,Modern Construction Enterprises,OE,NA,Electrical
+301159,Modern Construction Projects,OE,NA,Electrical
+301089,Special Technical Project,OE,NA,Electrical
+300035,Kinematics and Kinetics of Machines,2,Autumn,Mechanical
+300040,Mechanics of Materials,2,Autumn,Mechanical
+300762,Fluid Mechanics,2,Autumn,Mechanical
+301079,Graphics 3: 3D Engineering Specifications and Visualisation,2,Autumn,Mechanical
+301290,Design Graphics: Communication for Manufacture,2,Autumn,Mechanical
+300480,Dynamics of Mechanical Systems,2,Spring,Mechanical
+300735,Automated Manufacturing,2,Spring,Mechanical
+300760,Thermodynamics and Heat Transfer,2,Spring,Mechanical
+300761,Advanced Mechanics of Materials,2,Spring,Mechanical
+300764,Mechanical Design,3,Autumn,Mechanical
+300763,Advanced Dynamics,3,Autumn,Mechanical
+300666,Advanced Engineering Topic 1,3,Autumn,Mechanical
+300759,Thermal and Fluid Engineering,3,Spring,Mechanical
+300488,Numerical Methods in Engineering,3,Spring,Mechanical
+300667,Advanced Engineering Topic 2,3,Spring,Mechanical
+300487,Mechatronic Design,3,Spring,Mechanical
+300741,Industrial Experience (Engineering),3,Spring,Mechanical
+300971,Engineering Project 1,4,Autumn,Mechanical
+301245,Final Year Project 1 (UG Engineering),4,Autumn,Mechanical
+300056,Robotics,4,Autumn,Mechanical
+300969,Advanced Engineering Thesis 1: Preliminary Investigations,4,Autumn,Mechanical
+300972,Engineering Project 2,4,Spring,Mechanical
+301246,Final Year Project 2 (UG Engineering),4,Spring,Mechanical
+300970,Advanced Engineering Thesis 2: Detailed Investigations,4,Spring,Mechanical
+301000,Computer Aided Engineering,4,Spring,Mechanical
+300999,Computational Fluid Dynamics,AU,NA,Mechanical
+301287,Design Graphics: Engineering Documentation,AU,NA,Mechanical
+301091,Graphics 4: Kinetic Narratives,AU,NA,Mechanical
+300570,Human-Computer Interaction,AU,NA,Mechanical
+300044,Microcontrollers and PLCs,2,Spring,Mechanical
+300043,Mobile Robotics,3,Spring,Mechanical
+301081,Sustainable Design 2: Product Service Systems,AU,NA,Mechanical
+301158,Modern Construction Enterprises,OE,NA,Mechanical
+301159,Modern Construction Projects,OE,NA,Mechanical
+301089,Special Technical Project,OE,NA,Mechanical
+301076,Graphics 2: Visual Simulation,Special,NA,Mechanical
+300035,Kinematics and Kinetics of Machines,2,Autumn,Robotics and Mechatronics
+300040,Mechanics of Materials,2,Autumn,Robotics and Mechatronics
+300005,Circuit Theory,2,Autumn,Robotics and Mechatronics
+300018,Digital Systems 1,2,Autumn,Robotics and Mechatronics
+300480,Dynamics of Mechanical Systems,2,Spring,Robotics and Mechatronics
+300735,Automated Manufacturing,2,Spring,Robotics and Mechatronics
+300052,Power and Machines,2,Spring,Robotics and Mechatronics
+300044,Microcontrollers and PLCs,2,Spring,Robotics and Mechatronics
+300764,Mechanical Design,3,Autumn,Robotics and Mechatronics
+300763,Advanced Dynamics,3,Autumn,Robotics and Mechatronics
+300025,Electronics,2,Autumn,Robotics and Mechatronics
+300666,Advanced Engineering Topic 1,3,Autumn,Robotics and Mechatronics
+300043,Mobile Robotics,3,Spring,Robotics and Mechatronics
+300667,Advanced Engineering Topic 2,3,Spring,Robotics and Mechatronics
+300487,Mechatronic Design,3,Spring,Robotics and Mechatronics
+300741,Industrial Experience (Engineering),3,Spring,Robotics and Mechatronics
+300971,Engineering Project 1,4,Autumn,Robotics and Mechatronics
+301245,Final Year Project 1 (UG Engineering),4,Autumn,Robotics and Mechatronics
+300056,Robotics,4,Autumn,Robotics and Mechatronics
+300969,Advanced Engineering Thesis 1: Preliminary Investigations,4,Autumn,Robotics and Mechatronics
+300972,Engineering Project 2,4,Spring,Robotics and Mechatronics
+301246,Final Year Project 2 (UG Engineering),4,Spring,Robotics and Mechatronics
+300075,Instrumentation and Measurement,4,Spring,Robotics and Mechatronics
+300970,Advanced Engineering Thesis 2: Detailed Investigations,4,Spring,Robotics and Mechatronics
+300999,Computational Fluid Dynamics,AU,NA,Robotics and Mechatronics
+301000,Computer Aided Engineering,4,Spring,Robotics and Mechatronics
+301290,Design Graphics: Communication for Manufacture,2,Autumn,Robotics and Mechatronics
+301287,Design Graphics: Engineering Documentation,AU,NA,Robotics and Mechatronics
+300029,Engineering Visualization,AU,NA,Robotics and Mechatronics
+300762,Fluid Mechanics,2,Autumn,Robotics and Mechatronics
+300759,Thermal and Fluid Engineering,3,Spring,Robotics and Mechatronics
+300760,Thermodynamics and Heat Transfer,2,Spring,Robotics and Mechatronics
+301158,Modern Construction Enterprises,OE,NA,Robotics and Mechatronics
+301159,Modern Construction Projects,OE,NA,Robotics and Mechatronics
+301089,Special Technical Project,OE,NA,Robotics and Mechatronics
+301076,Graphics 2: Visual Simulation,Special,NA,Robotics and Mechatronics
+301079,Graphics 3: 3D Engineering Specifications and Visualisation,2,Autumn,Robotics and Mechatronics
