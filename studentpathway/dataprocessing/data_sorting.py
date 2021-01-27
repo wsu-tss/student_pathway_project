@@ -66,7 +66,7 @@ def get_student_program(student_units, program_units, skip_program=["Common"]):
     # Checks if the skip program is an empty list
     if skip_program:
         # updating the set of units that are not in skip program
-        for program in program_units:
+        for program in skip_program:
             maintain_units.difference_update(
                 list(student_units.intersection(set(program_units[program])))
             )
@@ -136,3 +136,5 @@ def add_age(data, dob="date_of_birth", outcome_date="outcome_date", header="age"
     df[header] = pd.DatetimeIndex(df[outcome_date]).year - pd.DatetimeIndex(df[dob]).year
 
     return df
+
+# TODO: Sort by age
