@@ -107,8 +107,12 @@ def get_features(data, feature_columns):
 
     :return: Pandas dataframe with the extracted features.
     """
-
-    feature_data = data[feature_columns]
+    try:
+        feature_data = data[feature_columns]
+    except KeyError as e:
+        print("KeyError: " + str(e))
+        print("One or more features in feature_columns is not in the dataframe.")
+        raise
 
     return feature_data
 
