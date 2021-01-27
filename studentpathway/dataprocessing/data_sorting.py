@@ -137,4 +137,17 @@ def add_age(data, dob="date_of_birth", outcome_date="outcome_date", header="age"
 
     return df
 
-# TODO: Sort by age
+def sort_by_age(data, header="age"):
+    """Sorts the data based on age column.
+
+    :param data: Pandas dataframe.
+    :param header: Heading of the column to sort. (Default=``"age"``)
+
+    :return: Pandas dataframe with sorted column by age.
+    """
+
+    df = data.copy()
+
+    df = data.sort_values(by=[header], ignore_index=True)
+
+    return df
