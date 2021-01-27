@@ -112,7 +112,7 @@ def get_features(data, feature_columns):
 
     return feature_data
 
-def add_age(data, dob="date_of_birth", outome_date="outcome_date", header="age"):
+def add_age(data, dob="date_of_birth", outcome_date="outcome_date", header="age"):
     """Adds the student age column to the dataframe.
 
     :param data: Pandas dataframe.
