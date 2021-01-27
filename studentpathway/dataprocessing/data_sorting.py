@@ -90,7 +90,7 @@ def add_student_program(data, student_program, header="program"):
     :param student_program: A string of student program.
     :param header: A string to indicate the name of the new column. (Default=``"program"``)
 
-    :returns: A dataframe with an additional student program column.
+    :return: A dataframe with an additional student program column.
     """
 
     student_data = data.copy()
@@ -98,3 +98,37 @@ def add_student_program(data, student_program, header="program"):
     student_data[header] = student_program
 
     return student_data
+
+def get_features(data, feature_columns):
+    """Returns a pandas dataframe with feature columns.
+
+    :param data: Pandas dataframe.
+    :param feature_columns: List of all the features to be maintained.
+
+    :return: Pandas dataframe with the extracted features.
+    """
+
+    feature_data = data[feature_columns]
+
+    return feature_data
+
+def add_age(data, dob="date_of_birth", outome_date="outcome_date", header="age"):
+    """Adds the student age column to the dataframe.
+
+    :param data: Pandas dataframe.
+    :param dob: A string of date of birth as given in the dataset. (Default=``"date_of_birth"``)
+    :param outcome_date: A string of outcome date as given in the dataset. (Default=``"outcome_date"``)
+    :param header: A string of column header. (Default=``"age"``)
+
+    :return: Pandas dataframe with ``header`` column.
+    """
+    # Create a copy of dataframe
+    df = data.copy()
+
+    # Converting to datetime objects
+    df[outcome_date] = pd.to_datetime(data[outcome_date])
+    df[dob] = pd.to_datetime(data[dob])
+
+    df[header] = pd.DatetimeIndex(df[outcome_date]).year - pd.DatetimeIndex(df[dob]).year
+
+    return df
