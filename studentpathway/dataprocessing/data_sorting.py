@@ -152,7 +152,7 @@ def sort_by_age(data, header="age"):
 
     return df
 
-def special_units_year(data, year_map={"AU": 4, "OE": 4}, header="year"):
+def special_units_year(data, year_map={"AU": '4', "OE": '4'}, header="year"):
     """Returns a pandas dataframe by changing the special category
     to the year of study.
 
