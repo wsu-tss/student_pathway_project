@@ -151,3 +151,22 @@ def sort_by_age(data, header="age"):
     df = data.sort_values(by=[header], ignore_index=True)
 
     return df
+
+def special_units_year(data, year_map={"AU": 4, "OE": 4}, header="year"):
+    """Returns a pandas dataframe by changing the special category
+    to the year of study.
+
+    Eg. Students take Alternate Units ``AU`` and Other Elective ``OE`` in year 4.
+
+    :param data: Pandas dataframe of units.
+    :param year_map: A dict of mapping special category of units to year.
+    :param header: Column header to perform operation.
+
+    :return: Pandas dataframe with year mapped.
+    """
+
+    df = data.copy()
+
+    df.replace({header: year_map}, inplace=True)
+
+    return df
