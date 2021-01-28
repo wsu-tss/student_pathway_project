@@ -2,11 +2,11 @@ unit_code,unit_name,year,semester,program
 200237,Mathematics for Engineers 1,1,Autumn,Common
 300027,Engineering Computing,1,Autumn,Common
 300963,Engineering Physics,1,Autumn,Common
-300964,Introduction to Engineering Practice,NA,Autumn,Common
+300964,Introduction to Engineering Practice,1,Autumn,Common
 200238,Mathematics for Engineers 2,1,Spring,Common
-300021,Electrical Fundamentals,NA,Spring,Common
-300463,Fundamentals of Mechanics,NA,Spring,Common
-300965,Engineering Materials,NA,Spring,Common
+300021,Electrical Fundamentals,1,Spring,Common
+300463,Fundamentals of Mechanics,1,Spring,Common
+300965,Engineering Materials,1,Spring,Common
 300738,Surveying for Engineers,2,Autumn,Civil
 300040,Mechanics of Materials,2,Autumn,Civil
 300762,Fluid Mechanics,2,Autumn,Civil
