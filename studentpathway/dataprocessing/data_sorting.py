@@ -170,3 +170,28 @@ def special_units_year(data, year_map={"AU": '4', "OE": '4'}, header="year"):
     df.replace({header: year_map}, inplace=True)
 
     return df
+
+def study_score(data, mark_header="mark", unit_header="unit_code", round_upto=None):
+    """Returns the score of the student depending upon the units passed
+    and the number of attempts.
+
+    score = passed units / attempted units
+
+    :param data: pandas data frame of a single student.
+    :param mark_header: Column head to look for the marks to sort. (Default=``"mark"``)
+    :param unit_header: Column head to find the unit numbers.
+    :param round_upto: Rounds the score upto the decimals mentioned.
+
+    :return: study score of the students.
+    """
+
+    attempts = len(list(data[unit_header]))
+
+    passed_units = data[data[mark_header] >= 50].count()[mark_header]
+
+    score = passed_units / attempts
+
+    if round_upto:
+        return round(score, round_upto)
+
+    return score
