@@ -183,6 +183,11 @@ def study_score(data, mark_header="mark", unit_header="unit_code", round_upto=No
     :param round_upto: Rounds the score upto the decimals mentioned.
 
     :return: study score of the students.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> score = sp.study_score(student_data)
     """
 
     attempts = len(list(data[unit_header]))
