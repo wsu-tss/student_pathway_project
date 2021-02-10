@@ -200,3 +200,35 @@ def study_score(data, mark_header="mark", unit_header="unit_code", round_upto=No
         return round(score, round_upto)
 
     return score
+
+def student_scores(data, id_header="student_id", round_upto=None, sort_scores=True):
+    """Returns a dictionary mapping student id to their score.
+
+    :param data: data set with the features consisting of the column ``unit_code`` and ``mark``.
+    :param id_header: Column header with student id. (Default=``"student_id"``)
+    :param round_upto: Rounds the score upto the given decimal places. (Default=``None``)
+    :param sort_scores: Bool to sort the score. (Default=``True``)
+
+    :return: A dictionary mapping the student id to their score.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> data = sp.get_data("students_data/combined_data/eng_data.csv")
+    >>> student_scores = sp.student_scores(data, round_upto=2)
+    """
+
+    score_dict = dict()
+
+    students = list(data["student_id"].unique())
+
+    for student in students:
+        student_data = None
+        student_data = data.loc[data[id_header] == student]
+        score = study_score(student_data, round_upto=round_upto)
+        score_dict[student] = score
+
+    if sort_scores:
+        score_dict = dict(sorted(score_dict.items(), key=lambda item: item[1]))
+        
+    return score_dict
