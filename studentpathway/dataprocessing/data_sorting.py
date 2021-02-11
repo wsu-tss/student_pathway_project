@@ -230,5 +230,33 @@ def student_scores(data, id_header="student_id", round_upto=None, sort_scores=Tr
 
     if sort_scores:
         score_dict = dict(sorted(score_dict.items(), key=lambda item: item[1]))
-        
+
     return score_dict
+
+def sort_students_by_score(data, score, student_score_dict, id_header="student_id"):
+    """Returns the dataframe of the students from the given score.
+
+    :param data: Pandas DataFrame of students.
+    :param score: score to sort.
+    :param student_score_dict: Dictionary mapping student id to score.
+    :param id_header: Column heading of the dataframe to sort the student id.
+
+    :return: Pandas DataFrame with the students with the given score.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> data = sp.get_data("students_data/combined_data/eng_data.csv")
+    >>> student_scores = sp.student_scores(data, round_upto=2)
+    >>> score_data = sp.get_score_students(data, score=0, student_score_dict=student_scores)
+    """
+
+    score_student = []
+
+    for key, value in student_score_dict.items():
+        if value == score:
+            score_student.append(key)
+
+    score_data = data.loc[data[id_header].isin(score_student)]
+
+    return score_data
