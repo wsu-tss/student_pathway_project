@@ -260,3 +260,27 @@ def sort_students_by_score(data, score, student_score_dict, id_header="student_i
     score_data = data.loc[data[id_header].isin(score_student)]
 
     return score_data
+
+def score_frequency(student_scores, key="student_id", value="score", sort_scores=True):
+    """Returns a dictionary mapping score to the frequency of students getting the score.
+
+    :param student_score_dict: Dictionary of student id mapped to the score.
+
+    :return: A dictionary mapped score to the frequency.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> data = sp.get_data("students_data/combined_data/eng_data.csv")
+    >>> student_scores = sp.student_scores(data, round_upto=2)
+    >>> score_freq = sp.score_frequency(student_scores)
+    """
+
+    scores_df = pd.DataFrame({key: student_scores.keys(), value: student_scores.values()})
+
+    scores = scores_df[value].value_counts().to_dict()
+
+    if sort_scores:
+        scores = dict(sorted(scores.items(), key=lambda item: item[0]))
+
+    return scores
