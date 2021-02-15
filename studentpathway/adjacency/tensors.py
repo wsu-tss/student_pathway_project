@@ -35,7 +35,7 @@ def sequence_tensor(students_data,
 
     for student in students:
         # getting the data of a single student
-        df0 = students_data.loc[student_data[id_header] == student]
+        df0 = students_data.loc[students_data[id_header] == student]
         df1 = df0.copy()
         df1 = df0.sort_values(by=[date_header], ignore_index=True)
 
