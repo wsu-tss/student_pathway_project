@@ -36,7 +36,7 @@ students = list(feature_data.student_id.unique())
 
 d_stu1 = feature_data.loc[feature_data["student_id"] == students[0]]
 
-student_units = list(d_stu.unit_code)
+student_units = list(d_stu1.unit_code)
 
 student_program = sp.get_student_program(student_units, program)
 
