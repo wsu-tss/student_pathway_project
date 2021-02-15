@@ -42,7 +42,7 @@ student_program = sp.get_student_program(student_units, program)
 
 d_stu2 = sp.sort_by_age(d_stu1)
 
-s_stu3 = sp.add_student_program(d_stu2, student_program)
+d_stu3 = sp.add_student_program(d_stu2, student_program)
 
 # Mapping the units and categorising any special units.
 
