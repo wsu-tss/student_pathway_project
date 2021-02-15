@@ -23,6 +23,11 @@ dataprocessing submodule
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: studentpathway.dataprocessing.data_sorting
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
 
 adjacency submodule
 ^^^^^^^^^^^^^^^^^^^
