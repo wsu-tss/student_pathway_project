@@ -24,11 +24,13 @@ def sequence_tensor(students_data,
     :return units: list of all the units in the data.
     """
 
+    students_data[date_header] = pd.to_datetime(students_data[date_header], dayfirst=True)
+
     # List of students
-    students = list(data[id_header].unique())
+    students = list(students_data[id_header].unique())
 
     # List of units
-    units = list(data[unit_header].unique())
+    units = list(unit_data[unit_header].unique())
 
     # Creating a Tensor
     T = [np.zeros((len(students), len(units)))]
@@ -37,6 +39,8 @@ def sequence_tensor(students_data,
         # getting the data of a single student
         df0 = students_data.loc[students_data[id_header] == student]
         df1 = df0.copy()
+
+        # Re-organising the student df by unit outcome date
         df1 = df0.sort_values(by=[date_header], ignore_index=True)
 
         years = list(df1[date_header].dt.year.unique())
@@ -59,8 +63,9 @@ def sequence_tensor(students_data,
             uo_year = df1.iloc[i][date_header].year
             uo_month = df1.iloc[i][date_header].month
 
+            # import pdb; pdb.set_trace()
             if uo_year > current_year or uo_month > sem_separator_month:
-                if past_month is not uo_month:
+                if past_month != uo_month:
                     semester_preference += 1
                     past_month = uo_month
                 current_year = uo_year
@@ -79,4 +84,4 @@ def sequence_tensor(students_data,
                 T.append(np.zeros((len(students), len(units))))
                 T[-1][student_index][unit_index] = semester_preference
 
-    return T
+    return T, students, units
