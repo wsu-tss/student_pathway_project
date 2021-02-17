@@ -19,9 +19,16 @@ def sequence_tensor(students_data,
     :param unit_header: Column heading for unit name. (Default="unit_name")
     :param id_header: Column heading for student it. (Default="student_id")
 
-    :return T: Sequence tensors of i x j x k where i = rows, j = columns, k = channel.
+    :return T: Sequence tensors of i x j x k where i = rows, j = columns, k = dimensions.
     :return students: list of all the students in the data.
     :return units: list of all the units in the data.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> students_data = pd.read_csv("students_data/combined_data/eng_data.csv")
+    >>> units_data = pd.read_csv("units_data/engineering_data/engineering_units.csv")
+    >>> T, students, units = sp.sequence_tensor(students_data, units_data)
     """
 
     students_data[date_header] = pd.to_datetime(students_data[date_header], dayfirst=True)
@@ -85,3 +92,94 @@ def sequence_tensor(students_data,
                 T[-1][student_index][unit_index] = semester_preference
 
     return T, students, units
+
+def _compute_count(dim0, dim1, T, i, j):
+    """Returns the count of students in the sequence.
+
+    :param dim0: First dimension of tensor T.
+    :param dim1: Second dimension of tensor T.
+    :param T: Sequence tensor.
+    :param i: iterator from the adjacency_tensor loop.
+    :param j: iterator from the adjacency_tensor loop.
+
+    :return: Count of the students in the sequence.
+    """
+    delta = T[dim0][:, j] - T[dim1][:, i]
+
+    d = np.absolute(delta)
+
+    Tdim = T[dim0][:, j]
+
+    count = np.sum(np.where(delta >= 0, 1, 0)
+                   * np.where(d == 1, 1, 0)
+                   * np.where(Tdim != 1, 1, 0))
+    return count
+
+def adjacency_tensor(T):
+    """Returns the adjacency matrix from the sequence tensor.
+
+    :param T: Sequence tensor of (i, j, k) dimensions.
+
+    :return: Adjacency matrix represting markov chain.
+    """
+
+    # Getting the dimensions for P matrix
+    P_dim = T[0].shape[1]
+
+    # Getting total number of students from a matrix from T.
+    total_students = T[0].shape[0]
+
+    # Creating a zeros P matrix of size of units from T.
+    P = np.zeros((P_dim, P_dim))
+
+    _P = P.copy()
+
+    # Removing the top and bottom dimensions of the Tensor.
+    mid_dimensions = [*range(len(T))]
+
+    # Remove first dimension
+    mid_dimensions.pop(0)
+
+    # Remove last dimension
+    mid_dimensions.pop(-1)
+
+    # Concatenating the Tensor
+    T_concatenate = np.concatenate(T, axis=0)
+
+    Tj = np.where(T_concatenate > 0, 1, 0)
+    Tj_total = np.sum(Tj, axis=0)
+
+    # Summing up all the columns - indicates the number of times a unit was taken.
+    for i in range(P_dim):
+        for j in range(P_dim):
+            count = []
+            terminate = False
+
+            # Count top dimension
+            count.append(_compute_count(0, 0, T, i, j))
+
+            for k in mid_dimensions:
+                if not np.sum(T[k][:, j]):
+                    terminate = True
+                    break
+                # Mid upwards
+                count.append(_compute_count(k, k - 1, T, i, j))
+
+                # Mid same
+                count.append(_compute_count(k, k, T, i, j))
+
+                # Mid lower
+                count.append(_compute_count(k + 1, k, T, i, j))
+
+            # Count bottom dimension
+            if not terminate:
+                count.append(_compute_count(-1, -1, T, i, j))
+
+            _P[i][j] = np.sum(count)
+
+            if not Tj_total[j] or not _P[i][j]:
+                P[i][j] = 0
+            else:
+                P[i][j] = _P[i][j] / Tj_total[i]
+
+    return _P, P
