@@ -26,7 +26,18 @@ def test_adjacency_tensor1():
     test_data = pd.read_csv(os.path.join(PATH, test_data_file))
     test_unit_data = pd.read_csv(os.path.join(PATH, test_unit_file))
 
-    T, students, units = sequence_tensor(test_data, test_unit_data)
+    T, students, units = sequence_tensor(test_data)
+    assert (len(T) == 3)
+    assert (T[0].shape == (5,4))
+
+def test_adjacency_tensor2():
+    test_data_file = "test_data6.csv"
+    test_unit_file = "test_unit_data.csv"
+
+    test_data = pd.read_csv(os.path.join(PATH, test_data_file))
+    test_unit_data = pd.read_csv(os.path.join(PATH, test_unit_file))
+
+    T, students, units = sequence_tensor(test_data, test_unit_data, units_from_students_data=False)
     assert (len(T) == 3)
     assert (T[0].shape == (5,4))
 

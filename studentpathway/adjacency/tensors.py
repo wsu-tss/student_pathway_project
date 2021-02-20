@@ -11,15 +11,15 @@ def sequence_tensor(students_data,
                     unit_header="unit_code",
                     id_header="student_id",
                     date_header="outcome_date",
-                    units_from_students_data=False):
+                    units_from_students_data=True):
     """Returns a sequence tensor of the student unit selection.
 
     :param students_data: Pandas dataframe.
-    :param unit_data: Pandas dataframe of unit data. (Default=None)
+    :param units_data: Pandas dataframe of unit data. (Default=None)
     :param sem_separator_month: Month  number used to separate the semesters. (Default=8)
     :param unit_header: Column heading for unit name. (Default="unit_name")
     :param id_header: Column heading for student it. (Default="student_id")
-    :param units_from_students_data: Bool (Default=False)
+    :param units_from_students_data: Bool (Default=True)
 
     :return T: Sequence tensors of i x j x k where i = rows, j = columns, k = dimensions.
     :return students: list of all the students in the data.
