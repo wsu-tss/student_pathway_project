@@ -6,18 +6,20 @@ from tqdm import tqdm
 
 
 def sequence_tensor(students_data,
-                    unit_data,
+                    units_data=None,
                     sem_separator_month=8,
                     unit_header="unit_code",
                     id_header="student_id",
-                    date_header="outcome_date"):
+                    date_header="outcome_date",
+                    units_from_students_data=False):
     """Returns a sequence tensor of the student unit selection.
 
     :param students_data: Pandas dataframe.
-    :param unit_data: Pandas dataframe of unit data.
+    :param unit_data: Pandas dataframe of unit data. (Default=None)
     :param sem_separator_month: Month  number used to separate the semesters. (Default=8)
     :param unit_header: Column heading for unit name. (Default="unit_name")
     :param id_header: Column heading for student it. (Default="student_id")
+    :param units_from_students_data: Bool (Default=False)
 
     :return T: Sequence tensors of i x j x k where i = rows, j = columns, k = dimensions.
     :return students: list of all the students in the data.
@@ -37,7 +39,13 @@ def sequence_tensor(students_data,
     students = list(students_data[id_header].unique())
 
     # List of units
-    units = list(unit_data[unit_header].unique())
+    if not units_from_students_data:
+        units = list(units_data[unit_header].unique())
+    else:
+        units = list(students_data[unit_header].unique())
+
+    if not isinstance(units_data, pd.DataFrame):
+        units = list(students_data[unit_header].unique())
 
     # Creating a Tensor
     T = [np.zeros((len(students), len(units)))]
