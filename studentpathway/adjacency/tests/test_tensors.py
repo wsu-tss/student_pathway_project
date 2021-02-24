@@ -53,3 +53,17 @@ def test_adjacency_tensor():
     _P, P = adjacency_tensor(T)
 
     assert(P.shape == (4, 4))
+
+def test_projections():
+    students = {"P": {111, 222, 333, 444}, "C": set(), "M": {111,222,333,444}, "B": set()}
+
+    P = np.array([[0, 0.25, 0, 0],
+                   [0, 0, 0, 0],
+                   [0, 0.5, 0, 0.5],
+                   [0, 0, 0, 0]])
+
+    projection, projection_count = projections(students, P)
+
+    assert (len(projection.keys()) == 4)
+    assert (projection_count['P'] == 0)
+    assert (projection_count['C'] == 3)
