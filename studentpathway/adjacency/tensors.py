@@ -196,6 +196,17 @@ def projections(s, P):
     :param P: Probability of student transitions.
 
     :return: Projections that indicates the student movement.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> students = [4, 0, 4, 0]
+    >>> P = np.array([[0, 1, 0, 0],
+                      [0, 0, 0, 0],
+                      [0, 1, 0, 1],
+                      [0, 0, 0, 0]])
+    >>> projections = sp.projections(students, P)
+    array([0., 4., 0., 4.])
     """
 
     pred = np.dot(s, P)
