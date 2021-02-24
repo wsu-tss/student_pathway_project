@@ -188,3 +188,24 @@ def adjacency_tensor(T):
                 P[i][j] = _P[i][j] / Tj_total[i]
 
     return _P, P
+
+def projections(s, P):
+    """Returns the projection of students given the current students in the sequence tensor.
+
+    :param s: students in every unit.
+    :param P: Probability of student transitions.
+
+    :return: Projections that indicates the student movement.
+    """
+
+    pred = np.dot(s, P)
+
+    common_students = np.where(P > 0, 1, 0)
+
+    common_sum = np.sum(common_students, axis=0)
+
+    den = np.where(common_sum == 0, 1, common_sum)
+
+    projections = pred / den
+
+    return projections
