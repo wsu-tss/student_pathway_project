@@ -230,7 +230,7 @@ def projections(students, P):
         vec[units.index(k)] = len(v)
 
         # Predicting the transitions.
-        pred = list(np.dot(vec, P))
+        pred = list(np.round(np.dot(vec, P)))
 
         # Updating the projections.
         for i in range(len(pred)):
