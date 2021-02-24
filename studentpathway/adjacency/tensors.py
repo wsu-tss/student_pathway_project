@@ -3,6 +3,7 @@ import numpy as np
 from datetime import datetime
 import sys
 from tqdm import tqdm
+import random
 
 
 def sequence_tensor(students_data,
@@ -189,10 +190,10 @@ def adjacency_tensor(T):
 
     return _P, P
 
-def projections(s, P):
+def projections(students, P):
     """Returns the projection of students given the current students in the sequence tensor.
 
-    :param s: students in every unit.
+    :param students: A dictionary of students in every unit.
     :param P: Probability of student transitions.
 
     :return: Projections that indicates the student movement.
@@ -200,23 +201,51 @@ def projections(s, P):
     :Example:
 
     >>> import studentpathway as sp
-    >>> students = [4, 0, 4, 0]
+    >>> students = {"P": {111, 222, 333, 444}, "C": {}, "M": {111,222,333,444}, "B": {}}
     >>> P = np.array([[0, 1, 0, 0],
                       [0, 0, 0, 0],
                       [0, 1, 0, 1],
                       [0, 0, 0, 0]])
-    >>> projections = sp.projections(students, P)
-    array([0., 4., 0., 4.])
+    >>> projection, projection_count = sp.projections(students, P)
+    >>> print(projection)
+    {'P': set(), 'C': {444, 333, 222, 111}, 'M': set(), 'B': {444, 333, 222, 111}}
+    >>> print(projection_count)
+    {'P': 0, 'C': 4, 'M': 0, 'B': 4}
     """
 
-    pred = np.dot(s, P)
+    projection = dict()
 
-    common_students = np.where(P > 0, 1, 0)
+    # Creating a dictionary of projection with units mapping to the set of students
+    for k in students:
+        projection[k] = set()
 
-    common_sum = np.sum(common_students, axis=0)
+    # Units in the new data
+    units = list(students.keys())
 
-    den = np.where(common_sum == 0, 1, common_sum)
+    for k, v in students.items():
+        # vector as per the size of the projections.
+        vec = np.zeros(len(units))
 
-    projections = pred / den
+        # Adding the student count to the vector representing a unit.
+        vec[units.index(k)] = len(v)
 
-    return projections
+        # Predicting the transitions.
+        pred = list(np.dot(vec, P))
+
+        # Updating the projections.
+        for i in range(len(pred)):
+            if pred[i] > 0:
+                unit = units[i]
+                if not projection[unit]:
+                    projection[unit] = set(random.sample(students[k], int(pred[i])))
+                else:
+                    temp_set = students[k] - projection[unit]
+                    if temp_set:
+                        projection[unit] = projection[unit].union(set(random.sample(temp_set, int(pred[i]))))
+
+    # Counting the projection of students
+    projection_count = dict()
+    for k, v in projection.items():
+        projection_count[k] = len(list(v))
+
+    return projection, projection_count
