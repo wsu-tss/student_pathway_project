@@ -201,7 +201,7 @@ def projections(students, P):
     :Example:
 
     >>> import studentpathway as sp
-    >>> students = {"P": {111, 222, 333, 444}, "C": {}, "M": {111,222,333,444}, "B": {}}
+    >>> students = {"P": {111, 222, 333, 444}, "C": set(), "M": {111,222,333,444}, "B": set()}
     >>> P = np.array([[0, 1, 0, 0],
                       [0, 0, 0, 0],
                       [0, 1, 0, 1],
