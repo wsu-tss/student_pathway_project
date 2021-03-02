@@ -220,7 +220,7 @@ def student_scores(data, id_header="student_id", round_upto=None, sort_scores=Tr
 
     score_dict = dict()
 
-    students = list(data["student_id"].unique())
+    students = list(data[id_header].unique())
 
     for student in students:
         student_data = None
@@ -284,3 +284,55 @@ def score_frequency(student_scores, key="student_id", value="score", sort_scores
         scores = dict(sorted(scores.items(), key=lambda item: item[0]))
 
     return scores
+
+def remove_score(students_data,
+                 units_data,
+                 feature_col=["student_id",
+                              "unit_code",
+                              "teaching_calendar",
+                              "mark",
+                              "gender",
+                              "campus_code",
+                              "citizenship",
+                              "indigenous_type",
+                              "age"],
+                 year_map={"AU": '4', "OE": '4', "Special":'2'},
+                 round_upto=4,
+                 id_header="student_id",
+                 score=0):
+    """Returns the dataframe of the students not required by the score provided.
+
+    :param students_data: Pandas dataframe of the students.
+    :param units_data: Pandas dataframe of the units.
+    :param feature_col: All the columns that are to be maintained.
+    :param year_map: Mapping special units to the year.
+    :param round_upto: Rounds the score upto the given value. (Default=4)
+    :param id_header: student identifier. (Default="student_id")
+    :param score: Score of the students to be removed. (Default=0)
+
+    :return: Pandas DataFrame with the students with the given score removed.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> students_data = sp.get_data("../students_data/combined_data/eng_data.csv")
+    >>> units_data = pd.read_csv("../units_data/engineering_data/engineering_units.csv")
+    >>> df = sp.remove_score(students_data, units_data)
+    """
+    df = add_age(students_data)
+
+    feature_data = get_features(df, feature_col)
+
+    student_score = student_scores(feature_data, round_upto=2)
+
+    score_student_df = sort_students_by_score(feature_data,
+                                              score=score,
+                                              student_score_dict=student_score)
+
+    # list students with zero score
+    score_students = list(score_student_df[id_header].unique())
+
+    # remove students with zero score
+    students_data = students_data[~students_data[id_header].isin(score_students)]
+
+    return students_data
