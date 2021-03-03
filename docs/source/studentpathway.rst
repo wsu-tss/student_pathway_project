@@ -46,3 +46,8 @@ adjacency submodule
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: studentpathway.adjacency.tensors
+  :members:
+  :undoc-members:
+  :show-inheritance:
