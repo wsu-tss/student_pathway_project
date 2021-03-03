@@ -154,7 +154,9 @@ def adjacency_tensor(T):
     # Remove last dimension
     mid_dimensions.pop(-1)
 
-    Tj = np.where(T[0] > 0, 1, 0)
+    T_concat = np.concatenate(T)
+
+    Tj = np.where(T_concat > 0, 1, 0)
     Tj_total = np.sum(Tj, axis=0)
 
     # Summing up all the columns - indicates the number of times a unit was taken.
