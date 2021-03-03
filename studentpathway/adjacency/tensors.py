@@ -34,7 +34,9 @@ def sequence_tensor(students_data,
     >>> T, students, units = sp.sequence_tensor(students_data, units_data)
     """
 
-    students_data[date_header] = pd.to_datetime(students_data[date_header], dayfirst=True)
+    data = students_data.copy()
+
+    students_data.loc[:, (date_header)] = pd.to_datetime(data.loc[:, (date_header)], dayfirst=True)
 
     # List of students
     students = list(students_data[id_header].unique())
@@ -240,8 +242,10 @@ def projections(students, P):
                     projection[unit] = set(random.sample(students[k], int(pred[i])))
                 else:
                     temp_set = students[k] - projection[unit]
-                    if temp_set:
-                        projection[unit] = projection[unit].union(set(list(temp_set)[-int(pred[i]):]))
+                    if len(temp_set) > int(pred[i]):
+                        projection[unit] = projection[unit].union(set(random.sample(temp_set, int(pred[i]))))
+                    else:
+                        projection[unit] = projection[unit].union(temp_set)
 
     # Counting the projection of students
     projection_count = dict()
@@ -249,3 +253,47 @@ def projections(students, P):
         projection_count[k] = len(list(v))
 
     return projection, projection_count
+
+def sort_students_by_units(T, students, units, sem=1):
+    """Returns the dictionary of units mapping to a set of students.
+
+    :param T: Tensor. List of numpy matrix.
+    :param students: List of students.
+    :param units: List of units.
+    :param sem: Semester value to filter. (Default=1)
+
+    :return: Dictonary mapping units to a set of students.
+
+    :Example:
+
+    >>> import studentpathway as sp
+    >>> foo0 = np.array([[1,2,0,0],[0,0,1,2],[0,0,1,0],[1,0,0,0],[1,1,0,0]])
+    >>> foo1 = np.array([[2,0,0,0],[0,0,2,0],[0,0,1,0],[1,0,0,0],[1,1,0,0]])
+    >>> foo = [foo0, foo1]
+    >>> units = ["P", "C", "M", "B"]
+    >>> students = ["111", "222", "333", "444", "555"]
+    >>> student_dict = sp.sort_students_by_units(foo, students, units, sem=2)
+    >>> student_dict
+    {'P': {'111'}, 'C': {'111'}, 'M': {'222'}, 'B': {'222'}}
+    """
+    temp_tensor = []
+
+    for i in range(sem):
+        temp_tensor.append(T[i])
+
+    for t in range(len(temp_tensor)):
+        temp_tensor[t] = np.where(temp_tensor[t]==sem, sem, 0)
+
+    student_dict = dict()
+
+    for unit in units:
+        student_dict[unit] = set()
+
+    for t in range(len(temp_tensor)):
+        for i in range(len(units)):
+            student_index_taken = temp_tensor[t][:,i]
+            student_index = list(np.where(student_index_taken==sem)[0])
+            for el in student_index:
+                student_dict[units[i]].add(students[el])
+
+    return student_dict

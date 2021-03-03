@@ -67,3 +67,13 @@ def test_projections():
     assert (len(projection.keys()) == 4)
     assert (projection_count['P'] == 0)
     assert (projection_count['C'] == 3)
+
+def test_sort_students_by_units():
+    foo0 = np.array([[1,2,0,0],[0,0,1,2],[0,0,1,0],[1,0,0,0],[1,1,0,0]])
+    foo1 = np.array([[2,0,0,0],[0,0,2,0],[0,0,1,0],[1,0,0,0],[1,1,0,0]])
+    foo = [foo0, foo1]
+    units = ["P", "C", "M", "B"]
+    students = ["111", "222", "333", "444", "555"]
+    student_dict = sort_students_by_units(foo, students, units, sem=2)
+
+    assert(len(list(student_dict.keys())) == 4)
