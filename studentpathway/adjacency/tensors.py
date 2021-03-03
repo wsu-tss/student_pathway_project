@@ -241,7 +241,7 @@ def projections(students, P):
                 else:
                     temp_set = students[k] - projection[unit]
                     if temp_set:
-                        projection[unit] = projection[unit].union(set(random.sample(temp_set, int(pred[i]))))
+                        projection[unit] = projection[unit].union(set(list(temp_set)[-int(pred[i]):]))
 
     # Counting the projection of students
     projection_count = dict()
